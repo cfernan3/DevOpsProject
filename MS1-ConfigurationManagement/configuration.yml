@@ -1,0 +1,92 @@
+---
+- hosts: all
+  tasks: 
+
+    - name: Update 
+      become: yes
+      apt:
+        update_cache: yes
+    - name: Upgrade
+      become: yes
+      apt:
+        upgrade: yes
+    
+    - name: Adding JAVA 8 repo
+      become: yes
+      apt_repository: repo='ppa:webupd8team/java'
+    
+    - name: Agrreing to Oracle License
+      become: yes
+      debconf: name=oracle-java8-installer question=shared/accepted-oracle-license-v1-1 vtype=select value=true
+
+    - name: Installing Jav 8
+      become: yes
+      apt:
+        name: oracle-java8-installer
+        force: yes
+
+    - name: Adding jenkins key 
+      become: yes
+      apt_key:
+        url: https://pkg.jenkins.io/debian/jenkins-ci.org.key
+        state: present
+    - name: add deb file in sources list
+      become: yes
+      blockinfile:
+        path: /etc/apt/sources.list.d/jenkins.list
+        block:
+          deb http://pkg.jenkins.io/debian-stable binary/
+        create: yes
+    - name: Update repositories cache and install "jenkins ansible maven2 vagrant" package
+      become: yes
+      apt:
+        update_cache: yes
+        name: "{{item}}"
+        state: present
+      with_items:
+        - jenkins
+        - ansible
+        - python-pip
+        - git
+        - node
+        - npm
+        - python-dev
+        - libxslt-dev
+        - libxml2-dev
+        - python-lxml
+        - maven
+
+    - name: Disabling jenkins setup wizard
+      become: yes
+      lineinfile:
+        path: /etc/default/jenkins
+        regexp: JAVA_ARGS="-Djava.awt.headless=true"
+        line: JAVA_ARGS="-Djava.awt.headless=true -Djenkins.install.runSetupWizard=false"
+        state: present
+
+    - pause:
+        seconds: 20
+
+    - name: Editing jenkins' config file to disable security
+      become: yes
+      lineinfile:
+        path: /var/lib/jenkins/config.xml
+        regexp: "useSecurity>true</useSecurity>"
+        line:   "<useSecurity>false</useSecurity>"
+        state: present
+    
+    - pip:
+        name: "{{item}}"
+      with_items:
+        - urllib3
+        - pyOpenSSL
+        - ndg-httpsclient
+        - pyasn1
+        - python-jenkins
+      become: yes
+
+    - name: service start
+      become: yes
+      service: 
+        name: jenkins
+        state: restarted
