@@ -90,3 +90,49 @@
       service: 
         name: jenkins
         state: restarted
+        
+    - name: Wait for Jenkins to start up
+      uri:
+        url: http://localhost:8080
+        status_code: 200
+        timeout: 5
+      register: jenkins_service_status
+      # Keep trying for 5 mins in 5 sec intervals
+      retries: 60
+      delay: 5
+      until: >
+         'status' in jenkins_service_status and
+         jenkins_service_status['status'] == 200
+
+    - name: script for adding credentials
+      set_fact:
+        script: |
+          import com.cloudbees.plugins.credentials.impl.*;
+          import com.cloudbees.plugins.credentials.*;
+          import com.cloudbees.plugins.credentials.domains.*;
+
+          Credentials c = (Credentials) new UsernamePasswordCredentialsImpl(CredentialsScope.GLOBAL,"a77a7a23-bafd-4fee-a1f3-85b9a2154b46", "description", "unityid", "password")
+
+          SystemCredentialsProvider.getInstance().getStore().addCredentials(Domain.global(), c)
+
+    - name: adding credentials
+      jenkins_script:
+        script: "{{script}}"
+        url: http://localhost:8080
+        user: admin
+        password: admin
+        validate_certs: no
+
+    - name: creating jenkins job for checkbox io
+      jenkins_job:
+        config: "{{ lookup('file', 'checkboxio_job.xml') }}"
+        name: checkboxio_job
+        url: http://localhost:8080
+    
+    - name: creating jenkins job for checkbox io
+      jenkins_job:
+        config: "{{ lookup('file', 'iTrust_job.xml') }}"
+        name: iTrust_job
+        url: http://localhost:8080
+
+    
