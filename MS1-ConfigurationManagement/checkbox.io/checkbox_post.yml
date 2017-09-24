@@ -1,0 +1,70 @@
+---
+- hosts: ckbox
+  become: yes
+
+  environment:
+    MONGO_PORT: 3002
+    MONGO_IP: localhost
+    MONGO_USER: 'admin'
+    MONGO_PASSWORD: 'admin'
+    MAIL_USER: 'admin@example.com'
+    MAIL_PASSWORD: 'admin'
+    MAIL_SMTP: 587
+   
+  tasks:
+    - name: Install list of packages
+      become: yes
+      apt: name={{item}} state=present update_cache=yes
+      with_items:
+        - build-essential
+        - python
+        - python-pip
+        - nodejs-legacy
+        - npm
+        - nginx
+    
+    - name: Set up key for mongodb
+      become: yes
+      command: apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+
+    - name: Create a mongodb list file
+      become: yes
+      command: echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+
+    - name: update
+      become: yes
+      apt:
+        update_cache: yes
+
+    - name: Install mongodb package
+      become: yes
+      apt: name=mongodb-org state=present update_cache=yes
+
+    - git:
+        repo: https://github.com/chrisparnin/checkbox.io.git
+        dest: /home/ubuntu/checkbox.io
+        update: no
+    
+    - name: # Copy the default server config to sites-available
+      become: yes
+      command:  cp /home/ubuntu/config/default /etc/nginx/sites-available/
+
+    - name: # Copy nginx configuration
+      become: yes
+      command: cp /home/ubuntu/config/nginx.conf /etc/nginx/
+
+    - name: Install npm modules
+      become: yes
+      command: chdir=/home/ubuntu/checkbox.io/server-side/site/ npm install
+
+    - service:
+        name: nginx
+        state: started                
+
+    - name: Install forever
+      command: chdir=/home/ubuntu/checkbox.io/server-side/site/ npm install forever -g
+      become: yes
+
+    - name: Start application
+      command: forever start /home/ubuntu/checkbox.io/server-side/site/server.js
+      become: yes
