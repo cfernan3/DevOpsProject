@@ -1,8 +1,8 @@
----
+--
 - hosts: all
-  tasks: 
+  tasks:
 
-    - name: Update 
+    - name: Update
       become: yes
       apt:
         update_cache: yes
@@ -10,11 +10,11 @@
       become: yes
       apt:
         upgrade: yes
-    
+
     - name: Adding JAVA 8 repo
       become: yes
       apt_repository: repo='ppa:webupd8team/java'
-    
+
     - name: Agrreing to Oracle License
       become: yes
       debconf: name=oracle-java8-installer question=shared/accepted-oracle-license-v1-1 vtype=select value=true
@@ -25,7 +25,7 @@
         name: oracle-java8-installer
         force: yes
 
-    - name: Adding jenkins key 
+    - name: Adding jenkins key
       become: yes
       apt_key:
         url: https://pkg.jenkins.io/debian/jenkins-ci.org.key
@@ -37,7 +37,8 @@
         block:
           deb http://pkg.jenkins.io/debian-stable binary/
         create: yes
-    - name: Update repositories cache and install "jenkins ansible maven2 vagrant" package
+		
+	- name: Update repositories cache and install "jenkins ansible maven2 vagrant" package
       become: yes
       apt:
         update_cache: yes
@@ -54,18 +55,28 @@
         - libxml2-dev
         - python-lxml
         - maven
-    
+
     - name: Add Ansible repo
+      become: yes
       command: apt-add-repository ppa:ansible/ansible
-    
+
     - name: Updating
       become: yes
       apt:
         update_cache: yes
-    
+
     - name: Installing Ansible
       become: yes
       apt: pkg=ansible state=present update_cache=yes
+
+    - name: Change ansible config
+      become: yes
+      lineinfile:
+        path: /etc/ansible/ansible.cfg
+        line: host_key_checking = False
+        state: present
+		
+		
     - name: Disabling jenkins setup wizard
       become: yes
       lineinfile:
@@ -84,7 +95,7 @@
         regexp: "useSecurity>true</useSecurity>"
         line:   "<useSecurity>false</useSecurity>"
         state: present
-    
+
     - pip:
         name: "{{item}}"
       with_items:
@@ -95,12 +106,34 @@
         - python-jenkins
       become: yes
 
-    - name: service start
+
+    - name: Editing the sudoers file
       become: yes
-      service: 
+      lineinfile:
+        path: /etc/sudoers
+        line: "jenkins ALL=(ALL) NOPASSWD: ALL"
+        state: present
+		
+	- name: service start
+      become: yes
+      service:
         name: jenkins
         state: restarted
-        
+
+    - pause:
+        seconds: 20
+
+    - name: Installing Post Script plugin for Jenkins
+      jenkins_plugin:
+        name: postbuild-task
+        with_dependencies: yes
+
+    - name: service start
+      become: yes
+      service:
+        name: jenkins
+        state: restarted
+
     - name: Wait for Jenkins to start up
       uri:
         url: http://localhost:8080
@@ -113,7 +146,8 @@
       until: >
          'status' in jenkins_service_status and
          jenkins_service_status['status'] == 200
-
+		 
+		 
     - name: script for adding credentials
       set_fact:
         script: |
@@ -138,11 +172,17 @@
         config: "{{ lookup('file', 'checkboxio_job.xml') }}"
         name: checkboxio_job
         url: http://localhost:8080
-    
-    - name: creating jenkins job for checkbox io
-      jenkins_job:
-        config: "{{ lookup('file', 'iTrust_job.xml') }}"
-        name: iTrust_job
-        url: http://localhost:8080
 
-    
+    - name: Copying jenkins_cli.jar file
+      become: yes
+      command: cp /var/cache/jenkins/war/WEB-INF/jenkins-cli.jar /home/vagrant/jenkins-cli.jar
+
+    - name: Building checkboxio jenkins job
+      become: yes
+      command: java -jar jenkins-cli.jar -s http://192.168.33.100:8080/ build checkboxio_job
+
+   # - name: creating jenkins job for checkbox io
+    #  jenkins_job:
+     #   config: "{{ lookup('file', 'iTrust_job.xml') }}"
+      #  name: iTrust_job
+       # url: http://localhost:8080
