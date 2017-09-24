@@ -45,7 +45,6 @@
         state: present
       with_items:
         - jenkins
-        - ansible
         - python-pip
         - git
         - node
@@ -55,7 +54,18 @@
         - libxml2-dev
         - python-lxml
         - maven
-
+    
+    - name: Add Ansible repo
+      command: apt-add-repository ppa:ansible/ansible
+    
+    - name: Updating
+      become: yes
+      apt:
+        update_cache: yes
+    
+    - name: Installing Ansible
+      become: yes
+      apt: pkg=ansible state=present update_cache=yes
     - name: Disabling jenkins setup wizard
       become: yes
       lineinfile:
