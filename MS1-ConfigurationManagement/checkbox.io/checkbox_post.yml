@@ -10,7 +10,7 @@
     MAIL_USER: 'admin@example.com'
     MAIL_PASSWORD: 'admin'
     MAIL_SMTP: 587
-   
+
   tasks:
     - name: Install list of packages
       become: yes
@@ -22,29 +22,19 @@
         - nodejs-legacy
         - npm
         - nginx
-    
-    - name: Set up key for mongodb
-      become: yes
-      command: apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
 
-    - name: Create a mongodb list file
-      become: yes
-      command: echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.4.list
-
-    - name: update
-      become: yes
-      apt:
-        update_cache: yes
-
-    - name: Install mongodb package
-      become: yes
-      apt: name=mongodb-org state=present update_cache=yes
+    - name: Add Mongo packages repo
+      apt_key: id=0C49F3730359A14518585931BC711F9BA15703C6  keyserver=keyserver.ubuntu.com
+    - name: add repo itself
+      apt_repository: repo='deb http://repo.mongodb.org/apt/ubuntu {{ansible_distribution_release}}/mongodb-org/3.4 multiverse' state=present
+    - name: install packages
+      apt: pkg=mongodb-org state=present update_cache=yes
 
     - git:
         repo: https://github.com/chrisparnin/checkbox.io.git
         dest: /home/ubuntu/checkbox.io
         update: no
-    
+
     - name: # Copy the default server config to sites-available
       become: yes
       command:  cp /home/ubuntu/config/default /etc/nginx/sites-available/
@@ -59,7 +49,7 @@
 
     - service:
         name: nginx
-        state: started                
+        state: restarted
 
     - name: Install forever
       command: chdir=/home/ubuntu/checkbox.io/server-side/site/ npm install forever -g
