@@ -61,7 +61,7 @@
           </logTexts>
           <EscalateStatus>false</EscalateStatus>
           <RunIfJobSuccessful>true</RunIfJobSuccessful>
-          <script>/home/vagrant/ConfigurationScript.sh</script>
+          <script>/home/vagrant/checkbox.io/ConfigurationScript.sh</script>
         </hudson.plugins.postbuildtask.TaskProperties>
       </tasks>
     </hudson.plugins.postbuildtask.PostbuildTask>
