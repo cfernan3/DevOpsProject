@@ -156,4 +156,9 @@
   - name: Maven deploy
     become: yes
     command: chdir=/root/iTrust-v23/iTrust sudo mvn tomcat:deploy -DskipTests
+  
+  - name: Restart tomcat service
+    service:
+      name: tomcat
+      state: restarted
 
