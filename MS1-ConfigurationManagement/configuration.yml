@@ -75,6 +75,13 @@
         force: yes
     
 
+    - name: copying yml files to jenkins server 
+      copy:
+        src: /home/vagrant/DevOpsProject
+        dest: /home/vagrant/
+        owner: vagrant
+        mode: 0644
+ 
     - name: Add Ansible repo
       become: yes
       command: apt-add-repository ppa:ansible/ansible
