@@ -48,7 +48,7 @@
         - jenkins
         - python-pip
         - git
-        - node
+        - nodejs
         - npm
         - python-dev
         - libxslt-dev
