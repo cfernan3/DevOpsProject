@@ -38,7 +38,7 @@
           deb http://pkg.jenkins.io/debian-stable binary/
         create: yes
 
-    - name: Update repositories cache and install "jenkins ansible maven2 vagrant" package
+    - name: Update repositories cache and install "jenkins ansible maven3 vagrant" package
       become: yes
       apt:
         update_cache: yes
@@ -149,7 +149,6 @@
         with_dependencies: yes
       with_items:
        - git
-       - ansible
        - postbuild-task
        
     - name: service start
