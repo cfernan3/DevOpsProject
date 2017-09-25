@@ -6,7 +6,7 @@
   - name: Add Oracle VirtualBox official repository to sources.list
     blockinfile:
       path: /etc/apt/sources.list
-      block: deb http://download.virtualbox.org/virtualbox/debian {{ ansible_di$
+      block: deb http://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib
 
   - name: downloading the key and adding it to key-ring for secure apt
     apt_key:
