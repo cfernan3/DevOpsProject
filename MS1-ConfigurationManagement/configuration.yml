@@ -201,6 +201,11 @@
         config: "{{ lookup('file', 'checkboxio_job.xml') }}"
         name: checkboxio_job
         url: http://localhost:8080
+    - name: creating jenkins job for checkbox io
+      jenkins_job:
+        config: "{{ lookup('file', 'iTrust_job.xml') }}"
+        name: iTrust_job
+        url: http://localhost:8080
 
 #    - name: Copying jenkins_cli.jar file
 #      become: yes
@@ -210,8 +215,3 @@
 #      become: yes
 #      command: java -jar jenkins-cli.jar -s http://192.168.33.100:8080/ build checkboxio_job
 
-   # - name: creating jenkins job for checkbox io
-    #  jenkins_job:
-     #   config: "{{ lookup('file', 'iTrust_job.xml') }}"
-      #  name: iTrust_job
-       # url: http://localhost:8080
