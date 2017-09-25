@@ -34,7 +34,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-	      <command>cd iTrust;mvn compile</command>
+	      <command>cd iTrust;sudo mvn compile</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
