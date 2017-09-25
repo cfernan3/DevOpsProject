@@ -1,0 +1,150 @@
+---
+- hosts: all
+  sudo: yes
+
+  tasks:
+  - name: Adding JAVA 8 repo
+    become: yes
+    apt_repository: repo='ppa:webupd8team/java'
+    
+  - name: Doing an apt update
+    become: yes
+    apt:
+      upgrade: yes
+      update_cache: true
+      
+  - name: silence the license question with the Oracle package from the PPA
+    become: yes
+    debconf: 
+      name: oracle-java8-installer 
+      question: shared/accepted-oracle-license-v1-1 
+      vtype: select 
+      value: true
+  
+  - name: Installing Java 8
+    become: yes
+    shell: apt-get install -y oracle-java8-installer ca-certificates
+
+  - name: Doing an apt-update
+    become: yes
+    apt:
+      upgrade: yes
+      update_cache: true
+
+  - name: Installing MySql
+    apt: 
+      name: mysql-server 
+      state: latest 
+
+  - name: Set MySql password
+    debconf: 
+      name: 'mysql-server' 
+      question: 'mysql-server/root_password' 
+      value: '' 
+      vtype: 'password'
+
+  - name: Confirm MySQL password
+    debconf: 
+      name: 'mysql-server' 
+      question: 'mysql-server/root_password_again' 
+      value: '' 
+      vtype: 'password'
+      
+  - name: Adding maven repo
+    apt_repository: 
+      repo: 'ppa:andrei-pozolotin/maven3'
+      
+  - name: Doing an apt-update for maven install
+    become: yes
+    apt:
+      upgrade: yes
+      update_cache: true
+
+  - name: install maven-3
+    apt:
+      name: maven3
+      state: installed
+
+      
+  - name: Adding tomcat username and password in mvn settings
+    copy: 
+      src: settings.xml 
+      dest: /usr/share/maven3/conf
+      mode: 0644
+
+  - name: Obtain tomcat tar file
+    get_url: 
+      url: http://archive.apache.org/dist/tomcat/tomcat-9/v9.0.0.M27/bin/apache-tomcat-9.0.0.M27.tar.gz
+      dest: /opt/
+      force: no
+
+  - name: make tomcat9 dir
+    become: yes
+    command: chdir=/opt sudo mkdir -p tomcat-9
+
+  - name: untar Tomcat
+    unarchive: 
+      remote_src: True
+      src: /opt/apache-tomcat-9.0.0.M27.tar.gz 
+      dest: /opt/tomcat-9
+
+  - name: Configuring Tomcat environment variables
+    become: yes
+    script: tomcatEnvConfig.sh
+
+  - name: Configuring Tomcat user and password
+    template: 
+      src: tomcat-users.xml 
+      dest: /opt/tomcat-9/apache-tomcat-9.0.0.M27/conf/
+
+  - name: Install Tomcat init script
+    copy: 
+      src: tomcat-initscript.sh 
+      dest: /etc/init.d/tomcat 
+      mode: 0755
+      
+#The Context element represents a web application, which is run within a particular virtual host
+  - name: Setting privelaged to true to allow this context to use container servlets, like the manager servlet.
+    copy: 
+      src: context.xml 
+      dest: /opt/tomcat-9/apache-tomcat-9.0.0.M27/webapps/manager/META-INF
+
+  - name: Start Tomcat
+    service: 
+      name: tomcat 
+      state: started 
+      enabled: yes
+
+  - name: Removing Case-Sensitivity in MySQL
+    copy: 
+      src: my.cnf 
+      dest: /etc/mysql
+
+  - name: Restarting MySQL service
+    service: 
+      name: mysql 
+      state: restarted
+
+  - name: Enabling the Manager App in Tomcat to be accessed by any host
+    copy: 
+      src: manager.xml 
+      dest: /opt/tomcat-9/apache-tomcat-9.0.0.M27/conf/Catalina/localhost
+
+  - name: Install git
+    apt: 
+      name: git 
+      state: present
+
+  - name: Git clone
+    git: 
+      repo: https://github.ncsu.edu/engr-csc326-staff/iTrust-v23.git 
+      dest: /root/iTrust-v23
+
+  - name: Maven package
+    become: yes
+    command: chdir=/root/iTrust-v23/iTrust sudo mvn package
+
+  - name: Maven deploy
+    become: yes
+    command: chdir=/root/iTrust-v23/iTrust sudo mvn tomcat:deploy
+
