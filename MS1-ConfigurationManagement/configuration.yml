@@ -80,12 +80,9 @@
 
     - name: copying yml files to jenkins server 
       become: yes
-      copy:
+      synchronize:
         src: /home/vagrant/DevOpsProject
         dest: /home/vagrant/
-        owner: vagrant
-        mode: 0644
-        directory_mode: yes
         
     - name: Add Ansible repo
       become: yes
