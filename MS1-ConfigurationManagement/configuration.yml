@@ -75,8 +75,7 @@
         path: /etc/ansible/ansible.cfg
         line: host_key_checking = False
         state: present
-		
-		
+
     - name: Disabling jenkins setup wizard
       become: yes
       lineinfile:
