@@ -22,7 +22,7 @@
 
     - name: copying vagrant files to VM2 directory
       copy:
-        src: /home/vagrant/DevOpsProject/MS1-ConfigurationManagement/checkbox.io/Vagrantfile
+        src: /home/vagrant/DevOpsProject/MS1-ConfigurationManagement/iTrust/Vagrantfile
         dest: /home/vagrant/VM2/
         owner: vagrant
         mode: 0644
