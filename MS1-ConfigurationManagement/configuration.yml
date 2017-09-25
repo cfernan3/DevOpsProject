@@ -88,7 +88,7 @@
       with_items:
         - /home/vagrant/DevOpsProject/MS1-ConfigurationManagement/ProvisionVM1.yml
         - /home/vagrant/DevOpsProject/MS1-ConfigurationManagement/ProvisionVM2.yml
-        - /home/vagrant/DevOpsProject/MS1-ConfigurationManagement/checkbox.io/ProvisionScript.sh
+        - /home/vagrant/DevOpsProject/MS1-ConfigurationManagement/checkbox.io/ProvisioningScript.sh
         - /home/vagrant/DevOpsProject/MS1-ConfigurationManagement/checkbox.io/ConfigurationScript.sh
         
     - name: Add Ansible repo
