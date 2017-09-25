@@ -50,7 +50,7 @@
           </logTexts>
           <EscalateStatus>false</EscalateStatus>
           <RunIfJobSuccessful>true</RunIfJobSuccessful>
-          <script>/home/vagrant/ProvisioningScript.sh</script>
+          <script>/home/vagrant/checkbox.io/ProvisioningScript.sh</script>
         </hudson.plugins.postbuildtask.TaskProperties>
         <hudson.plugins.postbuildtask.TaskProperties>
           <logTexts>
