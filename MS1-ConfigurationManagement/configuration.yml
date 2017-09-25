@@ -83,7 +83,7 @@
       synchronize:
         src: /home/vagrant/DevOpsProject
         dest: /home/vagrant/
-        
+      delegate_to: "{{ inventory_hostname }}"
     - name: Add Ansible repo
       become: yes
       command: apt-add-repository ppa:ansible/ansible
