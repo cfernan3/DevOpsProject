@@ -9,7 +9,7 @@
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
         <url>https://github.ncsu.edu/engr-csc326-staff/iTrust-v23.git</url>
-        <credentialsId>4d0afe5d-46fb-49da-874c-3fee6bc82ff7</credentialsId>
+        <credentialsId>a77a7a23-bafd-4fee-a1f3-85b9a2154b46</credentialsId>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
