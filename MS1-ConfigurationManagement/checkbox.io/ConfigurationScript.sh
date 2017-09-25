@@ -1,1 +1,1 @@
-sudo ansible-playbook -i /home/vagrant/inventory /home/vagrant/postBuild/ckbox.yml
+sudo ansible-playbook -i /home/vagrant/checkbox.io/inventory /home/vagrant/checkbox.io/checkbox_post.yml
