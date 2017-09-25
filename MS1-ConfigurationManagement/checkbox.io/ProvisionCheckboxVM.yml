@@ -41,4 +41,4 @@
         instance_id: "{{ newinstance.instance_ids[0] }}"
         
     - name: wait for server to come back online
-      local_action: wait_for host=13.58.27.152 state=started
+      pause: minutes=1
