@@ -58,16 +58,19 @@
         - vagrant
   
     - name: Add Oracle VirtualBox official repository to sources.list
+      become: yes
       blockinfile:
         path: /etc/apt/sources.list
         block: deb http://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib
 
     - name: downloading the key and adding it to key-ring for secure apt
+      become: yes
       apt_key:
         url: "https://www.virtualbox.org/download/oracle_vbox_2016.asc"
         state: present
 
     - name: update sfw sources and install VBox-5.0
+      become: yes
       apt:
         update_cache: yes
         name: virtualbox-5.0
@@ -76,6 +79,7 @@
     
 
     - name: copying yml files to jenkins server 
+      become: yes
       copy:
         src: /home/vagrant/DevOpsProject
         dest: /home/vagrant/
