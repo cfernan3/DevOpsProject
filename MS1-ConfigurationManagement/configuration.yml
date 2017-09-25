@@ -122,11 +122,23 @@
     - pause:
         seconds: 20
 
-    - name: Installing Post Script plugin for Jenkins
+    - name: installing jenkins plugins
+      become: yes
+      vars:
+        my_jenkins_params:
+          username: username
+          password: password
+          url: http://localhost:8080
+          validate_certs: False
       jenkins_plugin:
-        name: postbuild-task
+        name: "{{item}}"
+        state: present
         with_dependencies: yes
-
+      with_items:
+       - git
+       - ansible
+       - postbuild-task
+       
     - name: service start
       become: yes
       service:
