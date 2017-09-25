@@ -37,7 +37,7 @@
         block:
           deb http://pkg.jenkins.io/debian-stable binary/
         create: yes
-	
+
     - name: Update repositories cache and install "jenkins ansible maven2 vagrant" package
       become: yes
       apt:
