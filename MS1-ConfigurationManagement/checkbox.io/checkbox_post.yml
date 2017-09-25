@@ -45,13 +45,13 @@
       become: yes
       copy:
         src: /home/vagrant/checkbox.io/default
-        dst: /etc/nginx/sites-available/
+        dest: /etc/nginx/sites-available/
 
     - name: # Copy nginx configuration
       become: yes
       copy:
         src: /home/vagrant/checkbox.io/nginx.conf
-        dst: /etc/nginx/
+        dest: /etc/nginx/
         
     - name: Install npm modules
       become: yes
