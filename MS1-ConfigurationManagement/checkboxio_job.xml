@@ -50,7 +50,7 @@
           </logTexts>
           <EscalateStatus>false</EscalateStatus>
           <RunIfJobSuccessful>true</RunIfJobSuccessful>
-          <script>/home/vagrant/checkbox.io/ProvisioningScript.sh</script>
+          <script>sudo chmod +x /home/vagrant/checkbox.io/ProvisioningScript.sh;sudo sh /home/vagrant/checkbox.io/ProvisioningScript.sh</script>
         </hudson.plugins.postbuildtask.TaskProperties>
         <hudson.plugins.postbuildtask.TaskProperties>
           <logTexts>
@@ -61,7 +61,7 @@
           </logTexts>
           <EscalateStatus>false</EscalateStatus>
           <RunIfJobSuccessful>true</RunIfJobSuccessful>
-          <script>/home/vagrant/checkbox.io/ConfigurationScript.sh</script>
+          <script>sudo chmod +x /home/vagrant/checkbox.io/ConfigurationScript.sh; sudo sh /home/vagrant/checkbox.io/ConfigurationScript.sh</script>
         </hudson.plugins.postbuildtask.TaskProperties>
       </tasks>
     </hudson.plugins.postbuildtask.PostbuildTask>
