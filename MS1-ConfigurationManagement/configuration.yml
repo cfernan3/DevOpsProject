@@ -55,8 +55,16 @@
         - libxml2-dev
         - python-lxml
         - maven
-        - vagrant
-  
+
+    - name: downloading latest vagrant debian file
+      get_url: 
+        url: https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_x86_64.deb?_ga=2.202471441.1471655602.1504888778-396295755.1503592531
+        dest: /tmp/vagrant.deb
+    
+    - name: installing vagrant
+      apt: deb="/tmp/vagrant.deb"
+      sudo: true
+      
     - name: Add Oracle VirtualBox official repository to sources.list
       become: yes
       blockinfile:
