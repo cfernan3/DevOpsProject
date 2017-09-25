@@ -43,12 +43,16 @@
 
     - name: # Copy the default server config to sites-available
       become: yes
-      command:  cp /home/ubuntu/config/default /etc/nginx/sites-available/
+      copy:
+        src: /home/vagrant/checkbox.io/default
+        dst: /etc/nginx/sites-available/
 
     - name: # Copy nginx configuration
       become: yes
-      command: cp /home/ubuntu/config/nginx.conf /etc/nginx/
-
+      copy:
+        src: /home/vagrant/checkbox.io/nginx.conf
+        dst: /etc/nginx/
+        
     - name: Install npm modules
       become: yes
       command: chdir=/home/ubuntu/checkbox.io/server-side/site/ npm install
