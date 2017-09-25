@@ -3,6 +3,8 @@
 
 * Jenkins and it's installation.
 * The need to disable the starting Wizard for jenkins, disable security
+* Creating a job template viz. config.xml of required build jobs
+* 
 
 
 # Issues faced
