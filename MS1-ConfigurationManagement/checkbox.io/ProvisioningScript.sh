@@ -1,1 +1,1 @@
-sudo ansible-playbook -i /home/vagrant/checkbox.io/inventory /home/vagrant/checkbox.io/ProvisionVM1.yml
+sudo ansible-playbook -i localhost /home/vagrant/checkbox.io/ProvisionCheckboxVM.yml
