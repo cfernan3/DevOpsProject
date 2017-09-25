@@ -2,7 +2,7 @@
 # Learning
 
 
-# Issue faces
+# Issues faced
 
 
 # Contribution
