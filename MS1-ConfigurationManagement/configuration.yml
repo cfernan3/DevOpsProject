@@ -83,13 +83,13 @@
       copy:
         src: /home/vagrant/DevOpsProject/MS1-ConfigurationManagement/checkbox.io
         dest: /home/vagrant/
-    
+        owner: vagrant
     - name: copying itrust yml files to jenkins server 
       become: yes
       copy:
         src: /home/vagrant/DevOpsProject/MS1-ConfigurationManagement/iTrust
         dest: /home/vagrant/
-
+        owner: vagrant
     - name: Add Ansible repo
       become: yes
       command: apt-add-repository ppa:ansible/ansible
