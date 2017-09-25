@@ -111,9 +111,9 @@
       lineinfile:
         path: /etc/sudoers
         line: "jenkins ALL=(ALL) NOPASSWD: ALL"
-        state: present
-		
-	- name: service start
+        state: present	
+    
+    - name: service start
       become: yes
       service:
         name: jenkins
