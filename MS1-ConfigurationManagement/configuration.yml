@@ -194,7 +194,7 @@
         config: "{{ lookup('file', 'checkboxio_job.xml') }}"
         name: checkboxio_job
         url: http://localhost:8080
-    - name: creating jenkins job for checkbox io
+    - name: creating jenkins job for iTrust io
       jenkins_job:
         config: "{{ lookup('file', 'iTrust_job.xml') }}"
         name: iTrust_job
