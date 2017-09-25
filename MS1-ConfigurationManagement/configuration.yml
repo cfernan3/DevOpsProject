@@ -183,13 +183,13 @@
         name: checkboxio_job
         url: http://localhost:8080
 
-    - name: Copying jenkins_cli.jar file
-      become: yes
-      command: cp /var/cache/jenkins/war/WEB-INF/jenkins-cli.jar /home/vagrant/jenkins-cli.jar
+#    - name: Copying jenkins_cli.jar file
+#      become: yes
+#      command: cp /var/cache/jenkins/war/WEB-INF/jenkins-cli.jar /home/vagrant/jenkins-cli.jar
 
-    - name: Building checkboxio jenkins job
-      become: yes
-      command: java -jar jenkins-cli.jar -s http://192.168.33.100:8080/ build checkboxio_job
+#    - name: Building checkboxio jenkins job
+#      become: yes
+#      command: java -jar jenkins-cli.jar -s http://192.168.33.100:8080/ build checkboxio_job
 
    # - name: creating jenkins job for checkbox io
     #  jenkins_job:
