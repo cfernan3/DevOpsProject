@@ -78,12 +78,18 @@
         force: yes
     
 
-    - name: copying yml files to jenkins server 
+    - name: copying checkbox yml files to jenkins server 
       become: yes
-      synchronize:
-        src: /home/vagrant/DevOpsProject
+      copy:
+        src: /home/vagrant/DevOpsProject/checkbox.io
         dest: /home/vagrant/
-      delegate_to: "{{ inventory_hostname }}"
+    
+    - name: copying itrust yml files to jenkins server 
+      become: yes
+      copy:
+        src: /home/vagrant/DevOpsProject/iTrust
+        dest: /home/vagrant/
+
     - name: Add Ansible repo
       become: yes
       command: apt-add-repository ppa:ansible/ansible
