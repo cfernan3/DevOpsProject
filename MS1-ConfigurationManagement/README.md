@@ -19,5 +19,5 @@
 * ***sudoers*** : The post build action consists of a script that includes a command to execute the ansible-playbook that provsions an EC2 instance and configures checkbox.io or iTrust applicaitons on it. The command should be prepended with sudo because the script will be executed by the jenkins user. We encountered a hurdle in this  step. The post build was repeatedly failing because when the the script runs with sudo, it prompts for a password. The issue was resolved after editing the /etc/sudoers file appropraitely
 
 
-# Contribution
+### Contribution
 
