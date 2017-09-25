@@ -145,8 +145,7 @@
       until: >
          'status' in jenkins_service_status and
          jenkins_service_status['status'] == 200
-		 
-		 
+    
     - name: script for adding credentials
       set_fact:
         script: |
