@@ -145,6 +145,7 @@
         - ndg-httpsclient
         - pyasn1
         - python-jenkins
+        - boto
       become: yes
 
 
