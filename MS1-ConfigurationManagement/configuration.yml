@@ -81,11 +81,16 @@
     - name: copying yml files to jenkins server 
       become: yes
       copy:
-        src: /home/vagrant/DevOpsProject
+        src: "{{item}}"
         dest: /home/vagrant/
         owner: vagrant
         mode: 0644
- 
+      with_items:
+        - /home/vagrant/DevOpsProject/MS1-ConfigurationManagement/ProvisionVM1.yml
+        - /home/vagrant/DevOpsProject/MS1-ConfigurationManagement/ProvisionVM2.yml
+        - /home/vagrant/DevOpsProject/MS1-ConfigurationManagement/checkbox.io/ProvisionScript.sh
+        - /home/vagrant/DevOpsProject/MS1-ConfigurationManagement/checkbox.io/ConfigurationScript.sh
+        
     - name: Add Ansible repo
       become: yes
       command: apt-add-repository ppa:ansible/ansible
