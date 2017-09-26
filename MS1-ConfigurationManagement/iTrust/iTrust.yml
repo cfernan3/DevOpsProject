@@ -59,10 +59,6 @@
       value: '' 
       vtype: 'password'
       
-  - name: Adding maven repo
-    apt_repository: 
-      repo: 'ppa:andrei-pozolotin/maven3'
-      
   - name: Doing an apt-update for maven install
     become: yes
     apt:
