@@ -5,7 +5,7 @@
    <server>
      <id>tomcat</id>
      <username>admin</username>
-     <password>password</password>
+     <password></password>
    </server>
  </servers>
  <pluginGroups>
