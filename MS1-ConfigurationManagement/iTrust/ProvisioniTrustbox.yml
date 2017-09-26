@@ -39,6 +39,6 @@
         state: present
         region: us-east-2
         instance_id: "{{ newinstance.instance_ids[0] }}"
-        
+        ip: 52.15.166.19
     - name: wait for server to come back online
       pause: minutes=1
