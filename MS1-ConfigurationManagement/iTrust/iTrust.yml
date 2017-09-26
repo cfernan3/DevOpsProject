@@ -1,16 +1,7 @@
 ---
 - hosts: all
   sudo: yes
-
-  vars_prompt:
-  - name: "gituser"
-    prompt: "Please enter your github username"
-    private: no
-  - name: "gitpassword"
-    prompt: "Please enter your github password"
-    private: yes
-
-
+  
   tasks:
   - name: Adding JAVA 8 repo
     become: yes
@@ -142,7 +133,7 @@
 
   - name: Git clone
     git:
-      repo: https://{{ gituser }}:{{ gitpassword }}@github.ncsu.edu/engr-csc326-staff/iTrust-v23.git
+      repo: https://{{ please input git username }}:{{ please input git password }}@github.ncsu.edu/engr-csc326-staff/iTrust-v23.git
       dest: /root/iTrust-v23
 
   - name: Maven package
