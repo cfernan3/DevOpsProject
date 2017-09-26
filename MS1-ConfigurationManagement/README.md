@@ -15,8 +15,8 @@
 
 ### Contribution
 * **Jenkins auto-configuration :** Calvin, Revanth
-* Checkbox.io ansible play-book scripting:** 
-* Checkbox.io Testing:
-* iTrust ansible play-book scripting: 
-* iTrust Testing:
-* AWS EC2 setup:
+* **Checkbox.io ansible play-book scripting:** 
+* **Checkbox.io Testing:**
+* **iTrust ansible play-book scripting:**
+* **iTrust Testing:**
+* **AWS EC2 setup:**
