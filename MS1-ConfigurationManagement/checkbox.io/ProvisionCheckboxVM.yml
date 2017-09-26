@@ -12,8 +12,8 @@
   tasks:
     - name: Launch instance
       ec2:
-         aws_access_key: AKIAIWOJV4D4VVUA5R5Q
-         aws_secret_key: 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
+         aws_access_key:         #Enter appropriate aws_access_key
+         aws_secret_key:         #Enter appropriate aws_secret_key
          key_name: "{{ key_name }}"
          instance_type: "{{ instance_type }}"
          image: "{{ image }}"
@@ -32,13 +32,13 @@
 
     - name: Allocating elastic IP to instance
       ec2_eip:
-        aws_access_key: AKIAIWOJV4D4VVUA5R5Q
-        aws_secret_key: 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
+        aws_access_key:         #Enter appropriate aws_access_key
+        aws_secret_key:         #Enter appropriate aws_secret_key
         in_vpc: yes
         reuse_existing_ip_allowed: yes
         state: present
         region: us-east-2
         instance_id: "{{ newinstance.instance_ids[0] }}"
-        ip: 52.15.166.19
+        ip: 52.15.166.19       #Enter appropriate Elastic IP address
     - name: wait for server to come back online
       pause: minutes=1
