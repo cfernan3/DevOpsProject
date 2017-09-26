@@ -11,8 +11,7 @@
 * ***Jenkins plugins*** :We came across a large number of plugins available for jenkins. However, we primarily used git and postbuild-task plugins for source code management and running shell commands post build repectively.
 * ***Triggering build*** :Triggering the build in jenkins automatically was a challenging task. However, there were multiple ways of achieving it viz. using jenkins cli plugin or jenkins_job module for ansible. We chose the later because we can achieve two task viz creating the job and running the build automatically using the same module.
 * ***sudoers*** : The post build action consists of a script that includes a command to execute the ansible-playbook that provsions an EC2 instance and configures checkbox.io or iTrust applicaitons on it. The command should be prepended with sudo because the script will be executed by the jenkins user. We encountered a hurdle in this  step. The post build was repeatedly failing because when the the script runs with sudo, it prompts for a password. The issue was resolved after editing the /etc/sudoers file appropriately.
-* ***
-
+* ***ansible.cfg*** :After the checkbox.io or iTrust builds were successful and the post build triggered in Jenkins ,we faced an issue with "host ket verification failed " . We were stuck here for awhile and after exhautive research found that the reason for the error was the host_key_checking performed. On setting "host_key_checking=false" resolved the error. If it weren't for the error, we wouldn't have explored the ansible.cfg file
 
 ### Contribution
 
