@@ -17,6 +17,6 @@
 * **Jenkins auto-configuration :** Calvin, Revanth
 * **Checkbox.io ansible play-book scripting:** Jeris, Calvin
 * **Checkbox.io Testing:** Davis, Revanth
-* **iTrust ansible play-book scripting:** Davis, Jerris
-* **iTrust Testing:** Calvin, Jerris
+* **iTrust ansible play-book scripting:** Davis, Jeris
+* **iTrust Testing:** Calvin, Jeris
 * **AWS EC2 setup:** Revanth, Davis
