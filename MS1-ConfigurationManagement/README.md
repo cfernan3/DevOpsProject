@@ -27,6 +27,8 @@
 * ***checkbox.io*** : By default vagrant considers the python interpreter to be located in `/usr/bin/python` folder. This was not the case in ubuntu/xenial64 machine for which we had to specify the python interpreter location as `/usr/bin/python3`.
 * ***nginx configuration*** :nginx web server expects the server block configurations defined in the `/sites-available/default` file to be nested within the http block of `nginx.conf` file. We were making the mistake of putting it outside the http block which led to unexpected errors. Once we identified the silly issue, it was pretty easy to set up nginx to point to the correct static content for checkbox.io.
 * ***iTrust deployment***: When we deployed `iTrust-x.x.x.war` file on the Tomcat server after `mvn package` it would fail to load the CSS styles in the iTrust application. So we had to rename the war file to simply `iTrust.war` for it to display and work as expected. It took us more than 2 days for us to figure out where the issue lied.
+* ***AWS EC2***: We have to create the elastic IPs so that applications deployed are publicly accessbile. We have to take care of the security group properties to allow the certain traffic for example in this case TCP traffic at port 80 for checkbox and 8080 for iTrust application.
+
 
 ## File Description
 `configuration.yml` - Runs on the ansible master and configures a node with jenkins and then the build jobs on jenkins server.
