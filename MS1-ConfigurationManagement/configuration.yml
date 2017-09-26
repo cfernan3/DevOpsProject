@@ -139,8 +139,8 @@
       become: yes
       vars:
         my_jenkins_params:
-          username: username
-          password: password
+          username:            #Enter appropriate username
+          password:            #Enter appropriate password
           url: http://localhost:8080
           validate_certs: False
       jenkins_plugin:
