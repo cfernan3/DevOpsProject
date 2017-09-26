@@ -78,3 +78,7 @@
 * **iTrust Testing:** Calvin, Jeris
 * **AWS EC2 setup:** Revanth, Davis
 * **Report:** All
+
+# ScreenCast Video
+https://youtu.be/lfGdDshYo9I
+
