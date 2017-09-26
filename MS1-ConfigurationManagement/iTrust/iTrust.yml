@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: localhost
   sudo: yes
 
   vars_prompt:
@@ -32,7 +32,7 @@
   
   - name: Installing Java 8
     become: yes
-    shell: apt-get install -y oracle-java8-installer ca-certificates
+    shell: apt-get install -y oracle-java8-installer
 
   - name: Doing an apt-update
     become: yes
@@ -149,9 +149,9 @@
     become: yes
     command: chdir=/root/iTrust-v23/iTrust sudo mvn package -DskipTests
 
-  - name: Maven deploy
+  - name: copying war file
     become: yes
-    command: chdir=/root/iTrust-v23/iTrust sudo mvn tomcat:deploy -DskipTests
+    command: sudo mv /root/iTrust-v23/iTrust/target/*.war /opt/tomcat9/apache-tomcat-9.0.0.M17/webapps/iTrust.war
   
   - name: Restart tomcat service
     service:
