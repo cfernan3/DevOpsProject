@@ -14,4 +14,9 @@
 * ***ansible.cfg*** :After the checkbox.io or iTrust builds were successful and the post build triggered in Jenkins ,we faced an issue with "host ket verification failed " . We were stuck here for awhile and after exhautive research found that the reason for the error was the host_key_checking performed. On setting "host_key_checking=false" resolved the error. If it weren't for the error, we wouldn't have explored the ansible.cfg file
 
 ### Contribution
-
+* **Jenkins auto-configuration :** Calvin, Revanth
+* Checkbox.io ansible play-book scripting:** 
+* Checkbox.io Testing:
+* iTrust ansible play-book scripting: 
+* iTrust Testing:
+* AWS EC2 setup:
