@@ -1,3 +1,10 @@
+## Team
+* Calvin Fernando (cfernan3)
+* Davis Pynadath (dppynada)
+* Jeris Alan Jawahar (jjawaha)
+* Revanth Pathuri (rpathur)
+
+
 # Environment
 
 ![image](https://media.github.ncsu.edu/user/6391/files/45a7417c-a224-11e7-977d-f19af6ba061d)
