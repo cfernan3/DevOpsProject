@@ -1,0 +1,44 @@
+- name: Create a Web Server
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  vars:
+    key_name: devops_keypair
+    instance_type: t2.micro
+    image: ami-94ab8ef1
+    region: us-east-2
+    ec2_tag_Name: Web_server
+    ec2_subnet_ids: subnet-d5af05ae
+  tasks:
+    - name: Launch instance
+      ec2:
+         aws_access_key: AKIAIWOJV4D4VVUA5R5Q
+         aws_secret_key: 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
+         key_name: "{{ key_name }}"
+         instance_type: "{{ instance_type }}"
+         image: "{{ image }}"
+         wait: true
+         region: "{{ region }}"
+         instance_tags: '{"Name":"Web_Server"}'
+         vpc_subnet_id: "{{ ec2_subnet_ids}}"
+         assign_public_ip: yes
+         count: 1
+         volumes: 
+         - device_name: /dev/sda1
+           device_type: gp2
+           volume_size: 8
+           delete_on_termination: true
+      register: newinstance
+
+    - name: Allocating elastic IP to instance
+      ec2_eip:
+        aws_access_key: AKIAIWOJV4D4VVUA5R5Q
+        aws_secret_key: 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
+        in_vpc: yes
+        reuse_existing_ip_allowed: yes
+        state: present
+        region: us-east-2
+        instance_id: "{{ newinstance.instance_ids[0] }}"
+        
+    - name: wait for server to come back online
+      pause: minutes=1
