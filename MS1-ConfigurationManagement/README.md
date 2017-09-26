@@ -21,6 +21,46 @@
 * ***nginx configuration*** :nginx web server expects the server block configurations defined in the `/sites-available/default` file to be nested within the http block of `nginx.conf` file. We were making the mistake of putting it outside the http block which led to unexpected errors. Once we identified the silly issue, it was pretty easy to set up nginx to point to the correct static content for checkbox.io.
 * ***iTrust deployment***: When we deployed `iTrust-x.x.x.war` file on the Tomcat server after `mvn package` it would fail to load the CSS styles in the iTrust application. So we had to rename the war file to simply `iTrust.war` for it to display and work as expected. It took us more than 2 days for us to figure out where the issue lied.
 
+## File Description
+`configuration.yml` - Runs on the ansible master and configures a node with jenkins and then the build jobs on jenkins server.
+`checkboxio_job.xml` - Jenkins job for checkbox.io application
+`iTrust.xml` - Jenkins job for iTrust application
+
+`checkbox.io/ConfigurationScript.sh` - Installs and configures checkbox.io application on Amazon EC2 instances.
+
+`checkbox.io/ProvisioningScript.sh` - Script to provision Amazon EC2 instances for checkbox.io
+
+`checkbox/ProvisionCheckboxVM.yml` - Provision the Amazon EC2 instance for checkbox.io
+
+`checkbox/checkbox_post.yml` - Sets up the necessary packages for successfully configuring the checkbox.io application
+
+`checkbox/default` - Stores the default configuration for the http server running on nginx
+
+`checkbox/nginx.conf` - Strores the default configuration of nginx server
+
+`iTrust/ConfigurationScript.sh` - Installs and configures iTrust application on Amazon EC2 instances.
+
+`iTrust/ProvisioningScript.sh` - Provision the Amazon EC2 instance for iTrust
+
+`iTrust/ProvisioniTrustbox.yml` - Ansible script to provision the Amazon EC2 instances
+
+`iTrust/iTrust.yml` - Sets up the necessary packages for successfully configuration the iTrust application
+
+`iTrust/tomcatEnvConfig.sh` - Configures the Tomcat environment after its installation
+
+`iTrust/tomcat-initscript.sh` - Startup script for Tomcat server
+
+`iTrust/tomcat-users.xml` - Set up the tomcat users roles and account credentials
+
+`iTrust/settings.xml` - Stores default tomcat username and password
+
+`iTrust/manager.xml` - To set the manager app configuration for Tomcat
+
+`iTrust/context.xml` - To enable the web application to use container servelets.
+
+`iTrust/my.cnf` - Stores the MySQL configuration
+
+
 ### Contribution
 * **Jenkins auto-configuration :** Calvin, Revanth
 * **Checkbox.io ansible play-book scripting:** Jeris, Calvin
@@ -28,3 +68,4 @@
 * **iTrust ansible play-book scripting:** Davis, Jeris
 * **iTrust Testing:** Calvin, Jeris
 * **AWS EC2 setup:** Revanth, Davis
+* **Report:** All
