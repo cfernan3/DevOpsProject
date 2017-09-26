@@ -23,7 +23,9 @@
 
 ## File Description
 `configuration.yml` - Runs on the ansible master and configures a node with jenkins and then the build jobs on jenkins server.
+
 `checkboxio_job.xml` - Jenkins job for checkbox.io application
+
 `iTrust.xml` - Jenkins job for iTrust application
 
 `checkbox.io/ConfigurationScript.sh` - Installs and configures checkbox.io application on Amazon EC2 instances.
