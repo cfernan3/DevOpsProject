@@ -3,23 +3,45 @@
   connection: local
   gather_facts: False
   vars:
-    key_name: devops_keypair
+    key_name: #keypair name
     instance_type: t2.micro
-    image: ami-94ab8ef1
+    image: ami-10547475
     region: us-east-2
-    ec2_tag_Name: Web_server
+    ec2_tag_Name: iTrust_Server
     ec2_subnet_ids: subnet-d5af05ae
+    aws_access_key:         #Enter appropriate aws_access_key
+    aws_secret_key:  #Enter appropriate aws_secret_key
+    e_ip:  #Enter the public ip (elastic ip) for the new machine
   tasks:
+    - name: Get information of existing EC2 instances
+      ec2_remote_facts:
+         aws_access_key: "{{ aws_access_key }}"
+         aws_secret_key: "{{ aws_secret_key }}"
+         region: "{{ region }}"
+         filters:
+            "tag:Name": checkboxio_Server
+      register: checkboxio_info
+    
+    - name: terminating instance if it is already running
+      ec2:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}" 
+        region: "{{ region }}"
+        state: 'absent'
+        instance_ids: "{{item.id}}"
+      when: item.state == "running"
+      with_items: "{{checkboxio_info.instances}}"
+
     - name: Launch instance
       ec2:
-         aws_access_key:         #Enter appropriate access_key
-         aws_secret_key:         #Enter appropriate secret_key
+         aws_access_key: "{{ aws_access_key }}"
+         aws_secret_key: "{{ aws_secret_key }}"
          key_name: "{{ key_name }}"
          instance_type: "{{ instance_type }}"
          image: "{{ image }}"
          wait: true
          region: "{{ region }}"
-         instance_tags: '{"Name":"Web_Server"}'
+         instance_tags: '{"Name":"checkboxio_Server"}'
          vpc_subnet_id: "{{ ec2_subnet_ids}}"
          assign_public_ip: yes
          count: 1
@@ -32,13 +54,18 @@
 
     - name: Allocating elastic IP to instance
       ec2_eip:
-        aws_access_key:           #Enter appropriate access_key
-        aws_secret_key:           #Enter appropriate secret_key
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
         in_vpc: yes
         reuse_existing_ip_allowed: yes
         state: present
-        region: us-east-2
+        region: "{{ region }}"
         instance_id: "{{ newinstance.instance_ids[0] }}"
-        ip: 52.15.166.19         #Enter appropriate ip        
-    - name: wait for server to come back online
-      pause: minutes=1
+        ip: "{{ e_ip }}"       #Enter appropriate Elastic IP address
+    - name: Wait for SSH to come up
+      wait_for:
+         host: "{{ e_ip }}"
+         port: 22
+         delay: 60
+         timeout: 320
+         state: started
