@@ -19,8 +19,8 @@
          aws_secret_key: "{{ aws_secret_key }}"
          region: "{{ region }}"
          filters:
-            "tag:Name": checkboxio_Server
-      register: checkboxio_info
+            "tag:Name": iTrust_Server
+      register: iTrust_info
     
     - name: terminating instance if it is already running
       ec2:
@@ -30,7 +30,7 @@
         state: 'absent'
         instance_ids: "{{item.id}}"
       when: item.state == "running"
-      with_items: "{{checkboxio_info.instances}}"
+      with_items: "{{iTrust_info.instances}}"
 
     - name: Launch instance
       ec2:
@@ -41,7 +41,7 @@
          image: "{{ image }}"
          wait: true
          region: "{{ region }}"
-         instance_tags: '{"Name":"checkboxio_Server"}'
+         instance_tags: '{"Name":"iTrust_Server"}'
          vpc_subnet_id: "{{ ec2_subnet_ids}}"
          assign_public_ip: yes
          count: 1

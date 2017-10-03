@@ -1,8 +1,13 @@
 ---
 - hosts: ckbox
-  sudo: yes
-  
+  gather_facts: False
+  become: yes
+
   tasks:
+
+  - name: install python 2
+    raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+
   - name: Adding JAVA 8 repo
     become: yes
     apt_repository: repo='ppa:webupd8team/java'
