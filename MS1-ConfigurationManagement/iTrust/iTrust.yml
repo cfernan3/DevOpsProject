@@ -144,7 +144,7 @@
     become: yes
     copy:
       src: manager.xml
-      dest: /opt/tomcat-9/apache-tomcat-9.0.0.M27/conf/Catalina/localhost
+      dest: /opt/tomcat-9/apache-tomcat-9.0.0.M27/conf/
 
   - name: Install git
     become: yes
@@ -155,15 +155,15 @@
   - name: Git clone
     git:
       repo: https://{{ please input git username }}:{{ please input git password }}@github.ncsu.edu/engr-csc326-staff/iTrust-v23.git
-      dest: /root/iTrust-v23
+      dest: /tmp/iTrust-v23
 
   - name: Maven package
     become: yes
-    command: bash -lc "sudo su && cd /root/iTrust-v23/iTrust && sudo mvn package -DskipTests"
+    command: bash -lc "sudo su && cd /tmp/iTrust-v23/iTrust && sudo mvn package -DskipTests"
 
   - name: copying war file
     become: yes
-    command: bash -lc "sudo su && mv /root/iTrust-v23/iTrust/target/*.war /opt/tomcat-9/apache-tomcat-9.0.0.M27/webapps/iTrust.war"
+    command: bash -lc "sudo su && mv /tmp/iTrust-v23/iTrust/target/*.war /opt/tomcat-9/apache-tomcat-9.0.0.M27/webapps/iTrust.war"
 
   - name: Restart tomcat service
     service:
