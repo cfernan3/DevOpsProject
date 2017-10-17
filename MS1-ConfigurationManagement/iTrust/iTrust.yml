@@ -124,10 +124,7 @@
       seconds: 60
   - name: Start Tomcat
     become: yes
-    service:
-      name: tomcat
-      state: started
-      enabled: yes
+    shell: /opt/tomcat-9/apache-tomcat-9.0.0.M27/bin/startup.sh
 
   - name: Removing Case-Sensitivity in MySQL
     become: yes
@@ -165,8 +162,13 @@
     become: yes
     command: bash -lc "sudo su && mv /tmp/iTrust-v23/iTrust/target/*.war /opt/tomcat-9/apache-tomcat-9.0.0.M27/webapps/iTrust.war"
 
-  - name: Restart tomcat service
-    service:
-      name: tomcat
-      state: restarted
+  - name: shutdown tomcat service
+    become: yes
+    shell: /opt/tomcat-9/apache-tomcat-9.0.0.M27/bin/shutdown.sh
+    
+ 
+  - name: start tomcat service
+    become: yes
+    shell: /opt/tomcat-9/apache-tomcat-9.0.0.M27/bin/startup.sh
+    
 
