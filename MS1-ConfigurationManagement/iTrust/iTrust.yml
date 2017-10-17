@@ -121,7 +121,7 @@
       dest: /opt/tomcat-9/apache-tomcat-9.0.0.M27/webapps/manager/META-INF
 
   - pause:
-      seconds: 60
+      seconds: 10
   - name: Start Tomcat
     become: yes
     shell: /opt/tomcat-9/apache-tomcat-9.0.0.M27/bin/startup.sh
