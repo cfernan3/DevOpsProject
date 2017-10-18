@@ -6,30 +6,29 @@
       become: yes
       apt:
         update_cache: yes
-    - name: Upgrade
+    
+    - name: Adding JAVA 8 repo
+      become: yes
+      apt_repository: repo='ppa:openjdk-r/ppa'
+
+    - name: Doing an apt update
       become: yes
       apt:
         upgrade: yes
+        update_cache: true
 
-    - name: Adding JAVA 8 repo
+    - name: installing java 8
       become: yes
-      apt_repository: repo='ppa:webupd8team/java'
-
-    - name: Agrreing to Oracle License
-      become: yes
-      debconf: name=oracle-java8-installer question=shared/accepted-oracle-license-v1-1 vtype=select value=true
-
-    - name: Installing Jav 8
-      become: yes
-      apt:
-        name: oracle-java8-installer
-        force: yes
+      apt: 
+        name: openjdk-8-jdk
+        state: present
 
     - name: Adding jenkins key
       become: yes
       apt_key:
         url: https://pkg.jenkins.io/debian/jenkins-ci.org.key
         state: present
+    
     - name: add deb file in sources list
       become: yes
       blockinfile:
@@ -62,12 +61,14 @@
         src: /home/vagrant/DevOpsProject/MS1-ConfigurationManagement/checkbox.io
         dest: /home/vagrant/
         owner: vagrant
+    
     - name: copying itrust yml files to jenkins server 
       become: yes
       copy:
         src: /home/vagrant/DevOpsProject/MS1-ConfigurationManagement/iTrust
         dest: /home/vagrant/
         owner: vagrant
+    
     - name: Add Ansible repo
       become: yes
       command: apt-add-repository ppa:ansible/ansible
@@ -203,12 +204,4 @@
         config: "{{ lookup('file', 'iTrust_job.xml') }}"
         name: iTrust_job
         url: http://localhost:8080
-
-#    - name: Copying jenkins_cli.jar file
-#      become: yes
-#      command: cp /var/cache/jenkins/war/WEB-INF/jenkins-cli.jar /home/vagrant/jenkins-cli.jar
-
-#    - name: Building checkboxio jenkins job
-#      become: yes
-#      command: java -jar jenkins-cli.jar -s http://192.168.33.100:8080/ build checkboxio_job
 
