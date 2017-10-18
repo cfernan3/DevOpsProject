@@ -151,7 +151,7 @@
       
   - name: Git clone
     git:
-      repo: https://{{ please input git username }}:{{ please input git password }}@github.ncsu.edu/engr-csc326-staff/iTrust-v23.git
+      repo: https://{{ githubuser | urlencode }}:{{ githubpassword | urlencode }}@github.ncsu.edu/engr-csc326-staff/iTrust-v23.git
       dest: /tmp/iTrust-v23
 
   - name: Maven package
