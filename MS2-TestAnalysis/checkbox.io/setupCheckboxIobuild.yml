@@ -1,0 +1,177 @@
+---
+- hosts: all
+  gather_facts: False 
+  tasks:
+    - name: install python 2
+      become: yes
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+    - name: Update
+      become: yes
+      apt:
+        update_cache: yes
+    
+    - name: Adding JAVA 8 repo
+      become: yes
+      apt_repository: repo='ppa:openjdk-r/ppa'
+
+    - name: Doing an apt update
+      become: yes
+      apt:
+        update_cache: true
+
+    - name: installing java 8
+      become: yes
+      apt: 
+        name: openjdk-8-jdk
+        state: present
+
+    - name: Adding jenkins key
+      become: yes
+      apt_key:
+        url: https://pkg.jenkins.io/debian/jenkins-ci.org.key
+        state: present
+    
+    - name: add deb file in sources list
+      become: yes
+      blockinfile:
+        path: /etc/apt/sources.list.d/jenkins.list
+        block:
+          deb http://pkg.jenkins.io/debian-stable binary/
+        create: yes
+
+    - name: Update repositories cache and install "jenkins ansible maven3 vagrant" package
+      become: yes
+      apt:
+        update_cache: yes
+        name: "{{item}}"
+        state: present
+      with_items:
+        - jenkins
+        - python-pip
+        - git
+        - nodejs
+        - npm
+        - python-dev
+        - libxslt-dev
+        - libxml2-dev
+        - python-lxml
+       
+ 
+    - name: copying checkbox yml files to jenkins server 
+      become: yes
+      copy:
+        src: /home/vagrant/DevOpsProject/MS1-ConfigurationManagement/checkbox.io
+        dest: /tmp/
+        
+    
+    
+    - name: Add Ansible repo
+      become: yes
+      command: apt-add-repository ppa:ansible/ansible
+
+    - name: Updating
+      become: yes
+      apt:
+        update_cache: yes
+
+    - name: Installing Ansible
+      become: yes
+      apt: pkg=ansible state=present update_cache=yes
+
+    - name: Change ansible config
+      become: yes
+      lineinfile:
+        path: /etc/ansible/ansible.cfg
+        line: host_key_checking = False
+        state: present
+
+    - name: Disabling jenkins setup wizard
+      become: yes
+      lineinfile:
+        path: /etc/default/jenkins
+        regexp: JAVA_ARGS="-Djava.awt.headless=true"
+        line: JAVA_ARGS="-Djava.awt.headless=true -Djenkins.install.runSetupWizard=false"
+        state: present
+
+    - pause:
+        seconds: 20
+
+    - name: Editing jenkins' config file to disable security
+      become: yes
+      lineinfile:
+        path: /var/lib/jenkins/config.xml
+        regexp: "useSecurity>true</useSecurity>"
+        line:   "<useSecurity>false</useSecurity>"
+        state: present
+
+    - pip:
+        name: "{{item}}"
+      with_items:
+        - urllib3
+        - pyOpenSSL
+        - ndg-httpsclient
+        - pyasn1
+        - python-jenkins
+        - boto
+      become: yes
+
+
+    - name: Editing the sudoers file
+      become: yes
+      lineinfile:
+        path: /etc/sudoers
+        line: "jenkins ALL=(ALL) NOPASSWD: ALL"
+        state: present	
+    
+    - name: service start
+      become: yes
+      service:
+        name: jenkins
+        state: restarted
+
+    - pause:
+        seconds: 20
+
+    - name: installing jenkins plugins
+      become: yes
+      vars:
+        my_jenkins_params:
+          username:            #Enter appropriate username
+          password:            #Enter appropriate password
+          url: http://localhost:8080
+          validate_certs: False
+      jenkins_plugin:
+        name: "{{item}}"
+        state: present
+        with_dependencies: yes
+      with_items:
+       - git
+       - postbuild-task
+       - jacoco 
+    - name: service start
+      become: yes
+      service:
+        name: jenkins
+        state: restarted
+
+    - name: Wait for Jenkins to start up
+      uri:
+        url: http://localhost:8080
+        status_code: 200
+        timeout: 5
+      register: jenkins_service_status
+      # Keep trying for 5 mins in 5 sec intervals
+      retries: 60
+      delay: 5
+      until: >
+         'status' in jenkins_service_status and
+         jenkins_service_status['status'] == 200
+    
+
+    - name: creating jenkins job for checkbox io
+      jenkins_job:
+        config: "{{ lookup('file', 'checkboxio_job.xml') }}"
+        name: checkboxio_job
+        url: http://localhost:8080
+        
+
