@@ -8,7 +8,7 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>https://github.ncsu.edu/rpathur/DevOpsProject/tree/master/MS2-TestAnalysis/checkbox.io</url>
+        <url>https://github.com/revanth1993/checkbox.io</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -35,7 +35,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>cd server-side/site;npm install;node analysis.js</command>
+      <command>cd server-side/site;npm install;nodejs analysis.js</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
