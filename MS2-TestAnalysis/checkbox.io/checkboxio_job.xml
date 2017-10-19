@@ -35,7 +35,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>cd server-side/site;npm install</command>
+      <command>cd server-side/site;npm install;node analysis.js</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
