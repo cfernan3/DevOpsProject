@@ -223,7 +223,7 @@
           import com.cloudbees.plugins.credentials.*;
           import com.cloudbees.plugins.credentials.domains.*;
 
-          Credentials c = (Credentials) new UsernamePasswordCredentialsImpl(CredentialsScope.GLOBAL,"a77a7a23-bafd-4fee-a1f3-85b9a2154b46", "description", "rpathur", "@Arunareddy0")
+          Credentials c = (Credentials) new UsernamePasswordCredentialsImpl(CredentialsScope.GLOBAL,"a77a7a23-bafd-4fee-a1f3-85b9a2154b46", "description", "unityid", "password")
 
           SystemCredentialsProvider.getInstance().getStore().addCredentials(Domain.global(), c)
 
