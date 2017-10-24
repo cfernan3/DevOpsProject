@@ -30,7 +30,7 @@ In the end if we go back to the url of the jenkins job (http://IP:8080/job/iTrus
 <img width="1231" alt="screen shot 2017-10-24 at 5 43 25 pm" src="https://media.github.ncsu.edu/user/6181/files/ebc507a4-b8e2-11e7-8de2-0291143425d6">
 
 
-#### screencast
+#### Code Coverage Screencast
 The screencast for the Testing component is below.
 
 https://youtu.be/_eT9clq10Yk
@@ -45,6 +45,6 @@ https://youtu.be/_eT9clq10Yk
 
 This yml file would install the jenkins server and setup the build job for checkbox.io application. Additionally as a build command it would run analysis.js code as well to check if the checkbox.io application follows the specified constraints.
 
-#### screencast
+#### Analysis Component Screencast
 
 https://youtu.be/Yeu0xwAzbh0
