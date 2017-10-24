@@ -1,0 +1,145 @@
+FILENAME: marqdown.js
+~~~~~~~~~~~~
+ImportCount 0	Strings 0
+
+Function: loadJadeTemplates(): 32
+====================================
+bigOh: false	messageChain: 2	syncCalls: 8	LineCount: 24 
+
+
+Code doesnot follow the guidelines linecount or syncalls messagechain or complexity
+
+Function: testFile(): 59
+====================================
+bigOh: false	messageChain: 2	syncCalls: 0	LineCount: 26 
+
+
+Function: ReadHeader(): 87
+====================================
+bigOh: false	messageChain: 2	syncCalls: 0	LineCount: 12 
+
+
+Function: ReadBody(): 101
+====================================
+bigOh: false	messageChain: 2	syncCalls: 0	LineCount: 18 
+
+
+Function: EscapeCode(): 121
+====================================
+bigOh: false	messageChain: 8	syncCalls: 0	LineCount: 15 
+
+
+Code doesnot follow the guidelines linecount or syncalls messagechain or complexity
+
+Function: ProcessTokens(): 138
+====================================
+bigOh: false	messageChain: 4	syncCalls: 0	LineCount: 232 
+
+
+Code doesnot follow the guidelines linecount or syncalls messagechain or complexity
+
+Function: processInnerText(): 372
+====================================
+bigOh: false	messageChain: 3	syncCalls: 0	LineCount: 22 
+
+
+FILENAME: routes/admin.js
+~~~~~~~~~~~~
+ImportCount 0	Strings 0
+
+FILENAME: routes/create.js
+~~~~~~~~~~~~
+ImportCount 0	Strings 0
+
+Function: basicCreate(): 73
+====================================
+bigOh: false	messageChain: 2	syncCalls: 0	LineCount: 29 
+
+
+Function: sendStudyEmail(): 104
+====================================
+bigOh: false	messageChain: 2	syncCalls: 0	LineCount: 7 
+
+
+FILENAME: routes/csv.js
+~~~~~~~~~~~~
+ImportCount 0	Strings 0
+
+Function: formatJsonAsCSV(): 3
+====================================
+bigOh: true	messageChain: 3	syncCalls: 0	LineCount: 71 
+
+
+Code doesnot follow the guidelines linecount or syncalls messagechain or complexity
+
+Function: sizeOfRow(): 77
+====================================
+bigOh: true	messageChain: 3	syncCalls: 0	LineCount: 49 
+
+
+Code doesnot follow the guidelines linecount or syncalls messagechain or complexity
+
+FILENAME: routes/designer.js
+~~~~~~~~~~~~
+ImportCount 0	Strings 0
+
+FILENAME: routes/live.js
+~~~~~~~~~~~~
+ImportCount 0	Strings 0
+
+FILENAME: routes/study.js
+~~~~~~~~~~~~
+ImportCount 0	Strings 0
+
+Function: commonSubmit(): 188
+====================================
+bigOh: false	messageChain: 2	syncCalls: 0	LineCount: 15 
+
+
+FILENAME: routes/studyModel.js
+~~~~~~~~~~~~
+ImportCount 0	Strings 0
+
+Function: surrogateCtor(): 4
+====================================
+bigOh: false	messageChain: 0	syncCalls: 0	LineCount: 0 
+
+
+Function: extend(): 6
+====================================
+bigOh: false	messageChain: 3	syncCalls: 0	LineCount: 7 
+
+
+FILENAME: routes/test.js
+~~~~~~~~~~~~
+ImportCount 0	Strings 0
+
+Function: sizeOfRow(): 1
+====================================
+bigOh: true	messageChain: 3	syncCalls: 0	LineCount: 49 
+
+
+Code doesnot follow the guidelines linecount or syncalls messagechain or complexity
+
+FILENAME: routes/upload.js
+~~~~~~~~~~~~
+ImportCount 0	Strings 0
+
+Function: readFileStream(): 50
+====================================
+bigOh: false	messageChain: 3	syncCalls: 0	LineCount: 31 
+
+
+Function: readFile(): 83
+====================================
+bigOh: false	messageChain: 3	syncCalls: 0	LineCount: 8 
+
+
+Function: uploadFile(): 93
+====================================
+bigOh: false	messageChain: 3	syncCalls: 0	LineCount: 31 
+
+
+FILENAME: server.js
+~~~~~~~~~~~~
+ImportCount 0	Strings 0
