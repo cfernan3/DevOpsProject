@@ -6,4 +6,4 @@ https://youtu.be/_eT9clq10Yk
 
 screencast for analysis component
 
-https://youtu.be/voPwkebo-VE
+https://youtu.be/Yeu0xwAzbh0
