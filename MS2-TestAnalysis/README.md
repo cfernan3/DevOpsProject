@@ -1,4 +1,20 @@
-## Testing Component
+# DevOpsProject
+
+## Team
+* Calvin Fernando (cfernan3)
+* Davis Pynadath (dppynada)
+* Jeris Alan Jawahar (jjawaha)
+* Revanth Pathuri (rpathur)
+
+
+Milestone1: https://github.ncsu.edu/rpathur/DevOpsProject/tree/master/MS1-ConfigurationManagement
+
+Milestone2: https://github.ncsu.edu/rpathur/DevOpsProject/tree/Milestone2/MS2-TestAnalysis
+
+
+
+
+## 1. Testing Component
 
 Extend the build definitions for iTrust to include the ability to run its test suite, measure coverage, and report the results.
 #### setup 
@@ -20,7 +36,7 @@ The screencast for the Testing component is below.
 https://youtu.be/_eT9clq10Yk
 
 
-##  Analysis Component
+##  2. Analysis Component
 
 #### setup
 
