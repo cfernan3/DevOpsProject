@@ -1,0 +1,12 @@
+---
+- hosts: all
+  gather_facts: False
+  tasks:
+   - name: creating jenkins job for iTrust io
+     jenkins_job:
+        config: "{{ lookup('file', 'iTrustFuzzing_Job.xml') }}"
+        name: i_fuzzing
+        url: http://localhost:8080
+   - name: Running the fuzzing.js
+     shell: cd /home/ubuntu
+     shell: sudo node fuzzing.js
