@@ -1,7 +1,7 @@
-### Testing Component
+## Testing Component
 
 Extend the build definitions for iTrust to include the ability to run its test suite, measure coverage, and report the results.
-# setup 
+#### setup 
 
 1) edit the inventory file in the checkbox.io folder and change the public IP of EC2 instance and the keypair to login to the    instance
 2) run the setupiTrustbuild.yml 
@@ -9,26 +9,26 @@ Extend the build definitions for iTrust to include the ability to run its test s
 This yml file would install the jenkins server and setup the build job for iTrust application. Additionally as a build command it would run mvn package which would run the tests of the iTrust. 
 In the end if we go back to the url of the jenkins job (http://IP:8080/job/iTrust_job/) which would give the code coverage report for the iTrust application.
 
-# sample screenshot for code coverage
+#### sample screenshot for code coverage
 
 <img width="1231" alt="screen shot 2017-10-24 at 5 43 25 pm" src="https://media.github.ncsu.edu/user/6181/files/ebc507a4-b8e2-11e7-8de2-0291143425d6">
 
 
-# screencast
+#### screencast
 The screencast for the Testing component is below.
 
 https://youtu.be/_eT9clq10Yk
 
 
-###  Analysis Component
+##  Analysis Component
 
-# setup
+#### setup
 
 1) edit the inventory file in the checkbox.io folder and change the public IP of EC2 instance and the keypair to login to the    instance
 2) run the setupCheckboxIobuild.yml 
 
 This yml file would install the jenkins server and setup the build job for checkbox.io application. Additionally as a build command it would run analysis.js code as well to check if the checkbox.io application follows the specified constraints.
 
-# screencast
+#### screencast
 
 https://youtu.be/Yeu0xwAzbh0
