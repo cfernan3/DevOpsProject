@@ -1,3 +1,0 @@
-<Context privileged="true" >
-   <Valve className="org.apache.catalina.valves.RemoteAddrValve" allow="^.*$" />
-</Context>
