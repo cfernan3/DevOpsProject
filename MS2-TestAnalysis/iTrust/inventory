@@ -1,3 +1,3 @@
 [nodes]
-18.221.174.184 ansible_ssh_user=ubuntu ansible_ssh_private_key_file=/home/vagrant/devops_keypair.pem ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+<IP address> ansible_ssh_user=ubuntu ansible_ssh_private_key_file=<.pem file> ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 
