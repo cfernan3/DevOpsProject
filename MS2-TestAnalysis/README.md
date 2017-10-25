@@ -1,9 +1,9 @@
 # DevOpsProject
 
 ## Team
+* Abhishek Bandarupalle (abandar)
 * Calvin Fernando (cfernan3)
 * Davis Pynadath (dppynada)
-* Abhishek Bandarupalle (abandar)
 * Revanth Pathuri (rpathur)
 
 
@@ -68,3 +68,12 @@ The report for the analysis is there in markdown file in the checkbox.io folder 
 #### Analysis Component Screencast
 
 https://youtu.be/Yeu0xwAzbh0
+
+
+
+## Contribution
+
+* Testing component, code coverage : ***Revanth,Davis*** 
+* Fuzzer : ***Calvin,Revanth***
+* Useless Test Case Generator : ***Abhishek,Davis***
+* Analysis Component : ***Revanth,Calvin***
