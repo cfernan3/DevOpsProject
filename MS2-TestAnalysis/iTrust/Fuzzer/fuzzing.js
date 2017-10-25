@@ -81,7 +81,7 @@ var fuzz_file_content = function(filePath){
 }
 
 var runFuzzer = function(num){
-    var jenkins_server = "18.221.174.184";
+    var jenkins_server = "<Enter Appropriate IP>";
     var master_sha1 = "1fa2c51465380dd93d3313abc3a46c5c09830f1c";
     var branch_sha1 = "2a7f89b3f3b38d6cdf0a7fc28f41853aff19c412";
     
