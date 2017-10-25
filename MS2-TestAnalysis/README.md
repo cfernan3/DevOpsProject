@@ -3,7 +3,7 @@
 ## Team
 * Calvin Fernando (cfernan3)
 * Davis Pynadath (dppynada)
-* Jeris Alan Jawahar (jjawaha)
+* Abhishek Bandarupalle (abandar)
 * Revanth Pathuri (rpathur)
 
 
