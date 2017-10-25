@@ -40,9 +40,9 @@ https://youtu.be/_eT9clq10Yk
 ### setup
 
 1) edit the inventory file in the iTrust/Fuzzer/ folder and change the public IP of EC2 instance and the keypair to login to the    instance
-2) run the fuzzing.yml
+2) run the Fuzzer/fuzzing.yml
 
-This yml file is the playbook that triggers the commit fuzzer.It would create a new job, i_fuzzing, on jenkins server and execute npm install and node fuzzing.js. Additionally, the post build job has been configured to publish the using junit Testing Result report. The fuzzing.js scans the iTrust dir for all the .java files and randomly changes the code as per the given constraint.
+This yml file is the playbook that triggers the commit fuzzer.It would create a new job, i_fuzzing, on jenkins server and execute npm install and node fuzzing.js. Additionally, the post build job has been configured to publish the using junit Testing Result report which will be useful while detecting useless test cases. The fuzzing.js scans the iTrust dir for all the .java files and randomly changes the code as per the given constraint.
 
 #### Screencast for commit Fuzzer
 
