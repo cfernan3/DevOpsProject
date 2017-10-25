@@ -45,7 +45,7 @@ https://youtu.be/_eT9clq10Yk
 
 This yml file would install the jenkins server and setup the build job for checkbox.io application. Additionally as a build command it would run analysis.js code as well to check if the checkbox.io application follows the specified constraints.
 
-The report for the analysis is there in markdown file in the checkbox.io folder
+The report for the analysis is there in markdown file in the checkbox.io folder https://github.ncsu.edu/rpathur/DevOpsProject/blob/Milestone2/MS2-TestAnalysis/checkbox.io/markdown
 
 #### Analysis Component Screencast
 
