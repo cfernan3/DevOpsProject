@@ -44,7 +44,7 @@ https://youtu.be/_eT9clq10Yk
 
 This yml file is the playbook that triggers the commit fuzzer.It would create a new job, i_fuzzing, on jenkins server and execute npm install and node fuzzing.js. Additionally, the post build job has been configured to publish the using junit Testing Result report. The fuzzing.js scans the iTrust dir for all the .java files and randomly changes the code as per the given constraint.
 
-#### screencast for commit Fuzzer
+#### Screencast for commit Fuzzer
 
 https://youtu.be/9Gh4g9CVHBU
 
