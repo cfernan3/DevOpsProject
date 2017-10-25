@@ -50,9 +50,14 @@ https://youtu.be/9Gh4g9CVHBU
 
 ## 3. Useless Test Generator
 
+The file UselessTestDetector.py would take the junit xml files as input. It parses the xml file and analyses each test case if it fails it flags those test cases and writes it to results.csv file.
+
 ### setup
 
+Run python UselessTestDetector.py /var/lib/jenkins/jobs/i_fuzzing/builds/1/junitResult.xml
+
 #### Screencast for Useless Test Generator
+https://youtu.be/eZ7OQ_BW9oo
 
 ##  4. Analysis Component
 
