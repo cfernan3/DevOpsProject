@@ -73,7 +73,7 @@ https://youtu.be/Yeu0xwAzbh0
 
 ## Contribution
 
-* **Testing component, code coverage** : Revanth,Davis 
-* **Fuzzer** : Calvin,Revanth
-* **Useless Test Case Generator** : Abhishek,Davis
-* **Analysis Component** : Revanth,Calvin
+* **Testing component, code coverage** : Revanth, Davis 
+* **Fuzzer** : Calvin, Revanth
+* **Useless Test Case Generator** : Abhishek, Davis
+* **Analysis Component** : Revanth, Calvin
