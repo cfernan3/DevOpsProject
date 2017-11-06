@@ -10,3 +10,10 @@
 Milestone1: https://github.ncsu.edu/rpathur/DevOpsProject/tree/master/MS1-ConfigurationManagement
 
 Milestone2: https://github.ncsu.edu/rpathur/DevOpsProject/tree/Milestone2/MS2-TestAnalysis
+
+# Prerequisites
+
+* Add the public IP of the EC2 instance in the inventory file
+* Add the ssh key file to log into the EC2 instance in the inventory file
+* Add the public IP for the EC2 instances for iTrust and checkbox in the inventory files 
+* Add the Access key and secret key in the Provision*.yml files

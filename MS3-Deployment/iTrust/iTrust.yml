@@ -1,0 +1,169 @@
+---
+- hosts: all
+  gather_facts: False 
+  tasks:
+    - name: install python 2
+      become: yes
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+    - name: Update
+      become: yes
+      apt:
+        update_cache: yes
+    
+    - name: Adding JAVA 8 repo
+      become: yes
+      apt_repository: repo='ppa:openjdk-r/ppa'
+
+    - name: Doing an apt update
+      become: yes
+      apt:
+        update_cache: true
+
+    - name: installing java 8
+      become: yes
+      apt: 
+        name: openjdk-8-jdk
+        state: present
+
+    - name: Doing an apt-update
+      become: yes
+      apt:
+        upgrade: yes
+        update_cache: true
+
+    - name: Installing MySql
+      become: yes
+      apt:
+        name: mysql-server
+        state: latest
+
+    - name: Set MySql password
+      become: yes
+      debconf:
+        name: 'mysql-server'
+        question: 'mysql-server/root_password'
+        value: ''
+        vtype: 'password'
+
+    - name: Confirm MySQL password
+      become: yes
+      debconf:
+        name: 'mysql-server'
+        question: 'mysql-server/root_password_again'
+        value: ''
+        vtype: 'password'
+
+    - name: Doing an apt-update for maven install
+      become: yes
+      apt:
+        upgrade: yes
+        update_cache: true
+
+    - name: install maven-3
+      become: yes
+      apt:
+        name: maven
+        state: installed
+
+
+    - name: Adding tomcat username and password in mvn settings
+      become: yes
+      copy:
+        src: settings.xml
+        dest: /usr/share/maven/conf
+        mode: 0644
+
+    - name: Obtain tomcat tar file
+      become: yes
+      get_url:
+        url: http://archive.apache.org/dist/tomcat/tomcat-9/v9.0.0.M27/bin/apache-tomcat-9.0.0.M27.tar.gz
+        dest: /opt/
+        force: no
+
+    - name: make tomcat9 dir
+      become: yes
+      command: chdir=/opt sudo mkdir -p tomcat-9
+
+    - name: untar Tomcat
+      become: yes
+      unarchive:
+        remote_src: True
+        src: /opt/apache-tomcat-9.0.0.M27.tar.gz
+        dest: /opt/tomcat-9
+
+    - name: Configuring Tomcat environment variables
+      become: yes
+      script: tomcatEnvConfig.sh
+
+    - name: Configuring Tomcat user and password
+      become: yes
+      template:
+        src: tomcat-users.xml
+        dest: /opt/tomcat-9/apache-tomcat-9.0.0.M27/conf/
+
+    - name: Install Tomcat init script
+      become: yes
+      copy:
+        src: tomcat-initscript.sh
+        dest: /etc/init.d/tomcat
+        mode: 0755
+
+  #The Context element represents a web application, which is run within a particular virtual host
+    - name: Setting privelaged to true to allow this context to use container servlets, like the manager servlet.
+      become: yes
+      copy:
+        src: context.xml
+        dest: /opt/tomcat-9/apache-tomcat-9.0.0.M27/webapps/manager/META-INF
+
+    - pause:
+        seconds: 10
+    - name: Start Tomcat
+      become: yes
+      shell: /opt/tomcat-9/apache-tomcat-9.0.0.M27/bin/startup.sh
+
+    - name: Removing Case-Sensitivity in MySQL
+      become: yes
+      copy:
+        src: my.cnf
+        dest: /etc/mysql
+    - name: Restarting MySQL service
+      become: yes
+      service:
+        name: mysql
+        state: restarted
+
+    - name: Enabling the Manager App in Tomcat to be accessed by any host
+      become: yes
+      copy:
+        src: manager.xml
+        dest: /opt/tomcat-9/apache-tomcat-9.0.0.M27/conf/
+
+    - name: Install git
+      become: yes
+      apt:
+        name: git
+        state: present
+        
+    - name: Git clone
+      git:
+        repo: https://{{ githubuser | urlencode }}:{{ githubpassword | urlencode }}@github.ncsu.edu/engr-csc326-staff/iTrust-v23.git
+        dest: /tmp/iTrust-v23
+
+    - name: Maven package
+      become: yes
+      command: bash -lc "cd /tmp/iTrust-v23/iTrust && sudo mvn package -DskipTests"
+
+    - name: copying war file
+      become: yes
+      command: bash -lc "mv /tmp/iTrust-v23/iTrust/target/*.war /opt/tomcat-9/apache-tomcat-9.0.0.M27/webapps/iTrust.war"
+
+    - name: shutdown tomcat service
+      become: yes
+      command: nohup /opt/tomcat-9/apache-tomcat-9.0.0.M27/bin/shutdown.sh
+      
+   
+    - name: start tomcat service
+      become: yes
+      command: nohup /opt/tomcat-9/apache-tomcat-9.0.0.M27/bin/startup.sh
+      
+
