@@ -63,7 +63,7 @@ https://youtu.be/eZ7OQ_BW9oo
 
 ![fuzzingm2graph](https://media.github.ncsu.edu/user/6391/files/45d5fb58-c4a6-11e7-8251-46e192c46794)
 
-The above is a graph of number of useless test cases(on Y axis) vs number of builds(on X axis).
+The above is a graph of ***number of useless test cases(on Y axis) vs number of builds(on X axis)***.
 
 As expected, the number of useless test cases goes on decreasing as the number of builds goes on increasing. 
 
