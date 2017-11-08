@@ -1,0 +1,127 @@
+--- # A playbook to provision Jenkins server on Ubuntu 16.04
+- hosts: all
+  gather_facts: no
+
+  vars:
+    packages:
+      - python-dev
+      - python-mysqldb
+      - libmysqlclient-dev
+      - python-setuptools
+      - mysql-server
+      - oracle-java8-installer
+      - oracle-java8-set-default
+      - maven
+      - python-software-properties
+
+  tasks:
+
+    - name: Installing python 2
+      raw: test -e /usr/bin/python || (sudo apt -y update && sudo apt install -y python-minimal) 
+
+   # - name: git clone
+   #   command: git clone git@github.ncsu.edu:abandar/iTrust-v23.git
+   #   when: not st.stat.exists
+   #   args:
+   #     chdir: /home/ubuntu/
+   #   become: no
+
+    - name: Copying new build to remote
+      synchronize:
+        src: /var/lib/jenkins/workspace/iTrust
+        dest: /home/ubuntu/
+
+    - name: Add Oracle java apt repository key
+      apt_repository:
+        repo: 'ppa:webupd8team/java'
+      become: yes
+
+    - name: Accept Oracle java license
+      debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
+      changed_when: false
+      become: yes
+
+    - name: Installing required packages
+      apt: pkg={{packages}} state=present
+      become: yes
+
+    - name: removing case sensitivity in Sql
+      blockinfile:
+        dest: /etc/mysql/my.cnf
+        block: |
+          [mysqld]
+          lower_case_table_names = 1
+      register: mysql_case_sensitivity
+      become: yes
+
+    - name: flush priviliges mysql root user
+      shell: >
+        mysql -u root --execute "UPDATE mysql.user SET plugin = 'mysql_native_password' WHERE user = 'root'; FLUSH PRIVILEGES;"
+      become: yes
+
+    - name: restart
+      service: name=mysql state=restarted
+      become: yes
+
+    - name: Enabling mysql to run on boot
+      service:
+        name: mysql
+        state: started
+        enabled: true
+      become: yes
+
+    - name: installing tomcat
+      get_url:
+        url: http://mirrors.koehn.com/apache/tomcat/tomcat-8/v8.5.23/bin/apache-tomcat-8.5.23.tar.gz
+        dest: /home/ubuntu/
+      become: yes
+
+    - name: Unzipping tomcat package
+      command: tar -xvf apache-tomcat-8.5.23.tar.gz
+      args:
+        chdir: /home/ubuntu/
+      become: yes
+
+    - name: Installing jdbc connector
+      get_url:
+        url: https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.44.tar.gz
+        dest: /home/ubuntu/
+      become: yes
+
+    - name: Unzipping tomcat package
+      command: tar -xvf mysql-connector-java-5.1.44.tar.gz
+      args:
+        chdir: /home/ubuntu/
+      become: yes
+
+    - name: mvn compile
+      command: mvn compile
+      args:
+        chdir: /home/ubuntu/iTrust/iTrust/
+      become: yes
+
+    - name: generating war files
+      command: mvn package -DskipTests
+      args:
+        chdir: /home/ubuntu/iTrust/iTrust/
+      become: yes
+        
+    - name: moving the war files
+      copy:
+        src: /home/ubuntu/iTrust/iTrust/target/iTrust-23.0.0.war
+        dest: /home/ubuntu/apache-tomcat-8.5.23/webapps/
+        remote_src: True
+      become: yes
+
+    - name: Renaming war files
+      shell: cd /home/ubuntu/apache-tomcat-8.5.23/webapps; mv iTrust-23.0.0.war iTrust.war
+      become: yes
+
+    - name: starting tomcat
+      shell: cd /home/ubuntu/apache-tomcat-8.5.23/bin; ./startup.sh
+      become: yes
+
+  handlers:
+  - name: restart mysql
+    service: name=mysql state=restarted
+    become: yes
