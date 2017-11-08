@@ -59,6 +59,19 @@ Run python UselessTestDetector.py /var/lib/jenkins/jobs/i_fuzzing/builds/1/junit
 #### Screencast for Useless Test Generator
 https://youtu.be/eZ7OQ_BW9oo
 
+## Graph of Number of Useless TestCases vs Number of Builds
+
+![fuzzingm2graph](https://media.github.ncsu.edu/user/6391/files/45d5fb58-c4a6-11e7-8251-46e192c46794)
+
+The above is a graph of number of useless test cases(on Y axis) vs number of builds(on X axis).
+
+As expected, the number of useless test cases goes on decreasing as the number of builds goes on increasing. 
+
+However, after a particular build, the number of useless test cases remains constant irrespective of the fuzzing carried out.
+
+Lower the number of useless test cases with increase in number of builds is desired.
+Ideally, the number of useless test cases muct be 0
+
 ##  4. Analysis Component
 
 #### setup
