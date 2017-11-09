@@ -1,0 +1,8 @@
+[allhosts]
+
+iTrust-1 ansible_ssh_host=52.168.74.45 ansible_ssh_user=ubuntu
+iTrust-2 ansible_ssh_host=13.92.247.159 ansible_ssh_user=ubuntu
+iTrust-3 ansible_ssh_host=13.92.244.3 ansible_ssh_user=ubuntu
+iTrust-4 ansible_ssh_host=52.235.42.105 ansible_ssh_user=ubuntu
+iTrust-5 ansible_ssh_host=52.235.44.56 ansible_ssh_user=ubuntu
+

@@ -1,0 +1,38 @@
+---
+- hosts: allhosts
+  serial: 1
+  gather_facts: no
+
+  tasks:
+
+    - name: Copying new build to remote
+      synchronize:
+        src: /var/lib/jenkins/workspace/iTrust
+        dest: /home/ubuntu/
+
+    - name: mvn compile
+      command: mvn compile
+      args:
+        chdir: /home/ubuntu/iTrust/iTrust/
+      become: yes
+
+    - name: generating war files
+      command: mvn package -DskipTests
+      args:
+        chdir: /home/ubuntu/iTrust/iTrust/
+      become: yes
+        
+    - name: moving the war files
+      copy:
+        src: /home/ubuntu/iTrust/iTrust/target/iTrust-23.0.0.war
+        dest: /home/ubuntu/apache-tomcat-8.5.23/webapps/
+        remote_src: True
+      become: yes
+
+    - name: Renaming war files
+      shell: cd /home/ubuntu/apache-tomcat-8.5.23/webapps; mv iTrust-23.0.0.war iTrust.war
+      become: yes
+
+    - name: starting tomcat
+      shell: cd /home/ubuntu/apache-tomcat-8.5.23/bin; ./startup.sh
+      become: yes
