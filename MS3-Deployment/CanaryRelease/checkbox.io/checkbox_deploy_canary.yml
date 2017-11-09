@@ -1,0 +1,69 @@
+---
+- hosts: canary
+  gather_facts: False 
+  become: yes
+
+  environment:
+    MONGO_PORT: 3002
+    MONGO_IP: localhost
+    MONGO_USER:             #Enter appriopriate username
+    MONGO_PASSWORD:         #Enter appropriate password
+    MAIL_USER:              #Enter appropriate email id
+    MAIL_PASSWORD:          #Enter appropriate email password
+    MAIL_SMTP: 587
+
+  tasks:
+    - name: install python 2
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+ 
+    - name: Install list of packages
+      become: yes
+      apt: name={{item}} state=present update_cache=yes
+      with_items:
+        - build-essential
+        - python
+        - python-pip
+        - nodejs-legacy
+        - npm
+        - nginx
+
+    - name: Add Mongo packages repo
+      apt_key: id=0C49F3730359A14518585931BC711F9BA15703C6  keyserver=keyserver.ubuntu.com
+    - name: add repo itself
+      apt_repository: repo='deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse' state=present
+    - name: install packages
+      apt: pkg=mongodb-org state=present update_cache=yes
+
+    - git:
+        repo: https://github.com/revanth1993/checkbox.io
+        dest: /home/ubuntu/checkbox.io
+        update: no
+        version: canary
+
+    - name: Copy the default server config to sites-available
+      become: yes
+      copy:
+        src: /tmp/checkbox.io/default
+        dest: /etc/nginx/sites-available/
+
+    - name: Copy nginx configuration
+      become: yes
+      copy:
+        src: /tmp/checkbox.io/nginx.conf
+        dest: /etc/nginx/
+        
+    - name: Install npm modules
+      become: yes
+      command: chdir=/home/ubuntu/checkbox.io/server-side/site/ npm install
+
+    - service:
+        name: nginx
+        state: restarted
+
+    - name: Install forever
+      command: chdir=/home/ubuntu/checkbox.io/server-side/site/ npm install forever -g
+      become: yes
+
+    - name: Start application
+      command: forever start /home/ubuntu/checkbox.io/server-side/site/server.js
+      become: yes
