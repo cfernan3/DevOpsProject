@@ -7,24 +7,24 @@
 
     - name: Copying new build to remote
       synchronize:
-        src: /var/lib/jenkins/workspace/iTrust
+        src: /var/lib/jenkins/workspace/iTrust-Rolling/iTrust
         dest: /home/ubuntu/
 
     - name: mvn compile
       command: mvn compile
       args:
-        chdir: /home/ubuntu/iTrust/iTrust/
+        chdir: /home/ubuntu/iTrust/
       become: yes
 
     - name: generating war files
       command: mvn package -DskipTests
       args:
-        chdir: /home/ubuntu/iTrust/iTrust/
+        chdir: /home/ubuntu/iTrust/
       become: yes
         
     - name: moving the war files
       copy:
-        src: /home/ubuntu/iTrust/iTrust/target/iTrust-23.0.0.war
+        src: /home/ubuntu/iTrust/target/iTrust-23.0.0.war
         dest: /home/ubuntu/apache-tomcat-8.5.23/webapps/
         remote_src: True
       become: yes
