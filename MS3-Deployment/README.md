@@ -17,3 +17,11 @@ Milestone2: https://github.ncsu.edu/rpathur/DevOpsProject/tree/Milestone2/MS2-Te
 * Add the ssh key file to log into the EC2 instance in the inventory file
 * Add the public IP for the EC2 instances for iTrust and checkbox in the inventory files 
 * Add the Access key and secret key in the Provision*.yml files
+
+# Screencasts
+
+## Deployment
+https://youtu.be/whdO3UlxoZw
+
+## Canary Release
+https://youtu.be/Kj5e7-FwHwU
