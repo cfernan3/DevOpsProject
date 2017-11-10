@@ -25,3 +25,6 @@ https://youtu.be/whdO3UlxoZw
 
 ## Canary Release
 https://youtu.be/Kj5e7-FwHwU
+
+## Rolling Update
+https://youtu.be/TQRf9I4aon4
