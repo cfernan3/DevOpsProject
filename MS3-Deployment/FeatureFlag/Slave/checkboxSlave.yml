@@ -6,10 +6,10 @@
   environment:
     MONGO_PORT: 3002
     MONGO_IP: localhost
-    MONGO_USER: 'admin'             #Enter appriopriate username
-    MONGO_PASSWORD: 'admin'         #Enter appropriate password
-    MAIL_USER: 'admin@example.com'              #Enter appropriate email id
-    MAIL_PASSWORD: 'admin'          #Enter appropriate email password
+    MONGO_USER:             #Enter appriopriate username
+    MONGO_PASSWORD:          #Enter appropriate password
+    MAIL_USER:               #Enter appropriate email id
+    MAIL_PASSWORD:           #Enter appropriate email password
     MAIL_SMTP: 587
 
   tasks:
@@ -29,7 +29,7 @@
         - git
 
     - name: Add Mongo packages repo
-      apt_key: id=0C49F3730359A14518585931BC711F9BA15703C6  keyserver=keyserver.ubuntu.com
+      apt_key: id=<ID>  keyserver=keyserver.ubuntu.com
       #become: yes
       #command: apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
 
