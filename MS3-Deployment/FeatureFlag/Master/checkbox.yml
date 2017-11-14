@@ -1,0 +1,114 @@
+---
+- hosts: master
+  gather_facts: False 
+  become: yes
+
+  environment:
+    MONGO_PORT: 3002
+    MONGO_IP: localhost
+    MONGO_USER: 'admin'             #Enter appriopriate username
+    MONGO_PASSWORD: 'admin'         #Enter appropriate password
+    MAIL_USER: 'admin@example.com'              #Enter appropriate email id
+    MAIL_PASSWORD: 'admin'          #Enter appropriate email password
+    MAIL_SMTP: 587
+
+  tasks:
+    - name: install python 2
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+ 
+    - name: Install list of packages
+      become: yes
+      apt: name={{item}} state=present update_cache=yes
+      with_items:
+        - build-essential
+        - python
+        - python-pip
+        - nodejs-legacy
+        - npm
+        - nginx
+        - git
+
+    - name: Add Mongo packages repo
+      apt_key: id=0C49F3730359A14518585931BC711F9BA15703C6  keyserver=keyserver.ubuntu.com
+      #become: yes
+      #command: apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+
+    - name: add repo itself
+      apt_repository: repo='deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse' state=present
+      #become: yes
+      #command: echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+    - name: Update
+      become: yes
+      apt:
+        update_cache: yes
+
+    - name: install packages
+      apt: pkg=mongodb-org state=present update_cache=yes
+
+    - git:
+        repo: https://github.com/cfernan3/checkbox.io
+        dest: /home/ubuntu/checkbox.io
+        update: no
+
+    - name: adding ppa repository
+      become: yes
+      command: add-apt-repository ppa:chris-lea/redis-server
+
+    - name: Updating
+      become: yes
+      apt:
+        update_cache: yes
+
+    - name: Installing redis-server
+      become: yes
+      apt:
+        pkg: redis-server
+
+    - name: Copy the default server config to sites-available
+      become: yes
+      copy:
+        src: /home/vagrant/default
+        dest: /etc/nginx/sites-available/
+
+    - name: Copy nginx configuration
+      become: yes
+      copy:
+        src: /home/vagrant/nginx.conf
+        dest: /etc/nginx/
+    
+    - name: Deleting the default redis.conf
+      become: yes
+      file:
+        state: absent
+        path: /etc/redis/redis.conf
+
+    - name: Restart redis service
+      become: yes
+      command: service redis-server restart
+   
+    - name: Copy redis.conf
+      become: yes
+      copy:
+        src: /home/vagrant/Master/redis.conf
+        dest: /etc/redis/redis.conf
+
+    - name: Restart redis service
+      become: yes
+      command: service redis-server restart
+        
+    - name: Install npm modules
+      become: yes
+      command: chdir=/home/ubuntu/checkbox.io/server-side/site/ npm install
+
+    - service:
+        name: nginx
+        state: restarted
+
+    - name: Install forever
+      command: chdir=/home/ubuntu/checkbox.io/server-side/site/ npm install forever -g
+      become: yes
+
+    - name: Start application
+      command: forever start /home/ubuntu/checkbox.io/server-side/site/server.js
+      become: yes
+

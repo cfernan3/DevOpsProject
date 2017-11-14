@@ -1,0 +1,130 @@
+- name: Create a Web Server
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  vars:
+    key_name: WhatBot #key pair name
+    instance_type: t2.micro
+    image: ami-1dcf6467
+    region: us-east-1
+    ec2_tag_Name: checkboxio_Server
+    ec2_subnet_ids: subnet-07e9454c
+    aws_access_key: AKIAIGJ3DSISFAKGHG5A       #Enter appropriate aws_access_key
+    aws_secret_key: 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 #Enter appropriate aws_secret_key
+    e_ip: 54.156.253.240 #Enter the public ip (elastic ip) for the new machine
+    e_ip1: 34.238.110.232
+#    e_ip2: 52.202.52.119
+  tasks:
+    - name: Get information of existing EC2 instances
+      ec2_remote_facts:
+         aws_access_key: "{{ aws_access_key }}"
+         aws_secret_key: "{{ aws_secret_key }}"
+         region: "{{ region }}"
+         filters:
+            "tag:Name": checkboxio_Server
+      register: checkboxio_info
+    
+    - name: terminating instance if it is already running
+      ec2:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}" 
+        region: "{{ region }}"
+        state: 'absent'
+        instance_ids: "{{item.id}}"
+      when: item.state == "running"
+      with_items: "{{checkboxio_info.instances}}"
+
+    - name: Launch instance
+      ec2:
+         aws_access_key: "{{ aws_access_key }}"
+         aws_secret_key: "{{ aws_secret_key }}"
+         key_name: "{{ key_name }}"
+         instance_type: "{{ instance_type }}"
+         image: "{{ image }}"
+         wait: true
+         region: "{{ region }}"
+         instance_tags: '{"Name":"checkboxio_Server"}'
+         vpc_subnet_id: "{{ ec2_subnet_ids}}"
+         assign_public_ip: yes
+         count: 1
+         volumes: 
+         - device_name: /dev/sda1
+           device_type: gp2
+           volume_size: 8
+           delete_on_termination: true
+      register: newinstance
+
+    - name: Allocating elastic IP to instance
+      ec2_eip:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+        in_vpc: yes
+        reuse_existing_ip_allowed: yes
+        state: present
+        region: "{{ region }}"
+        instance_id: "{{ newinstance.instance_ids[0] }}"
+        ip: "{{ e_ip }}"       #Enter appropriate Elastic IP address
+    - name: Wait for SSH to come up
+      wait_for:
+         host: "{{ e_ip }}"
+         port: 22
+         delay: 60
+         timeout: 500
+         state: started
+
+    - name: Get information of existing Slave1 EC2 instances
+      ec2_remote_facts:
+         aws_access_key: "{{ aws_access_key }}"
+         aws_secret_key: "{{ aws_secret_key }}"
+         region: "{{ region }}"
+         filters:
+            "tag:Name": checkboxio_Slave1
+      register: checkboxioSlave1_info
+    
+    - name: terminating instance if it is already running
+      ec2:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+        region: "{{ region }}"
+        state: 'absent'
+        instance_ids: "{{item.id}}"
+      when: item.state == "running"
+      with_items: "{{checkboxioSlave1_info.instances}}"
+
+    - name: Launch instance
+      ec2:
+         aws_access_key: "{{ aws_access_key }}"
+         aws_secret_key: "{{ aws_secret_key }}"
+         key_name: "{{ key_name }}"
+         instance_type: "{{ instance_type }}"
+         image: "{{ image }}"
+         wait: true
+         region: "{{ region }}"
+         instance_tags: '{"Name":"checkboxio_Slave1"}'
+         vpc_subnet_id: "{{ ec2_subnet_ids}}"
+         assign_public_ip: yes
+         count: 1
+         volumes:
+         - device_name: /dev/sda1
+           device_type: gp2
+           volume_size: 8
+           delete_on_termination: true
+      register: newinstance
+
+    - name: Allocating elastic IP to instance
+      ec2_eip:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+        in_vpc: yes
+        reuse_existing_ip_allowed: yes
+        state: present
+        region: "{{ region }}"
+        instance_id: "{{ newinstance.instance_ids[0] }}"
+        ip: "{{ e_ip1 }}"       #Enter appropriate Elastic IP address
+    - name: Wait for SSH to come up
+      wait_for:
+         host: "{{ e_ip1 }}"
+         port: 22
+         delay: 60
+         timeout: 500
+         state: started
