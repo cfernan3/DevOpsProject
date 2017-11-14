@@ -9,10 +9,10 @@
     region: us-east-1
     ec2_tag_Name: checkboxio_Server
     ec2_subnet_ids: subnet-07e9454c
-    aws_access_key: AKIAIGJ3DSISFAKGHG5A       #Enter appropriate aws_access_key
-    aws_secret_key: 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 #Enter appropriate aws_secret_key
-    e_ip: 54.156.253.240 #Enter the public ip (elastic ip) for the new machine
-    e_ip1: 34.238.110.232
+    aws_access_key:        #Enter appropriate aws_access_key
+    aws_secret_key:  #Enter appropriate aws_secret_key
+    e_ip:  #Enter the public ip (elastic ip) for the new machine
+    e_ip1: 
 #    e_ip2: 52.202.52.119
   tasks:
     - name: Get information of existing EC2 instances
