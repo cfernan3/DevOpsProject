@@ -23,6 +23,9 @@ Milestone2: https://github.ncsu.edu/rpathur/DevOpsProject/tree/Milestone2/MS2-Te
 ## Deployment
 https://youtu.be/whdO3UlxoZw
 
+## Feature Flag
+http://youtu.be/tKDSOflHtGA?hd=1
+
 ## Canary Release
 https://youtu.be/Kj5e7-FwHwU
 
