@@ -19,7 +19,11 @@ Milestone2: https://github.ncsu.edu/rpathur/DevOpsProject/tree/Milestone2/MS2-Te
 * Add the Access key and secret key in the Provision*.yml files
 
 
+# Deployment
+
 # Infrastructure Upgrade
+
+### Nomad Cluster
 
 ### Feature Flag
 
@@ -30,6 +34,10 @@ Due to the master-slave redis configuration already set up by editing the /etc/r
 ***Below is the snippet of the code modified in server.js(checkbox.io)***
 ![image](https://media.github.ncsu.edu/user/6391/files/6601656e-ca34-11e7-9fce-fc2719dda4d2)
 
+
+# Canary Release
+
+# Rolling Update
 
 
 # Screencasts
