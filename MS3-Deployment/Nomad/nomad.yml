@@ -1,0 +1,15 @@
+---
+- hosts: nomad_instances
+  become: yes
+  pre_tasks:
+  - name: Disable Firewall
+    service: name=ufw state=stopped 
+  roles: 
+  - role: brianshumate.nomad
+    nomad_bind_address: 0.0.0.0
+    nomad_docker_enable: no
+- hosts: server
+  tasks:
+    - copy:
+        src: /root/DevOpsProject/MS3-Deployment/Nomad/checkbox.nomad
+        dest: /home/ubuntu

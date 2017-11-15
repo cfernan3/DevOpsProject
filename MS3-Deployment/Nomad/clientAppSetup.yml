@@ -1,0 +1,72 @@
+---
+- hosts: clients
+  gather_facts: False 
+  become: yes
+
+  environment:
+    MONGO_PORT: 3002
+    MONGO_IP: localhost
+    MONGO_USER: 'admin'             #Enter appriopriate username
+    MONGO_PASSWORD: 'admin'         #Enter appropriate password
+    MAIL_USER: 'admin@example.com'              #Enter appropriate email id
+    MAIL_PASSWORD: 'admin'          #Enter appropriate email password
+    MAIL_SMTP: 587
+
+  tasks:
+    - name: install python 2
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+ 
+    - name: Install list of packages
+      become: yes
+      apt: name={{item}} state=present
+      with_items:
+        - build-essential
+        - python
+        - python-pip
+        - nodejs-legacy
+        - npm
+        - nginx
+        - git
+        - python-netaddr
+
+    - name: Add Mongo packages repo
+      # apt_key: id=0C49F3730359A14518585931BC711F9BA15703C6  keyserver=keyserver.ubuntu.com
+      become: yes
+      command: apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+
+    - name: add repo itself
+      become: yes
+      #apt_repository: repo='deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse' state=present
+      command: echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+    
+    - name: Update
+      command: sudo apt-get update
+
+    - name: install packages
+      apt: pkg=mongodb-org state=present update_cache=yes
+
+    - git:
+        repo: https://github.com/davis-p/checkbox.io.git
+        dest: /home/ubuntu/checkbox.io
+        update: no
+        
+    - name: Copy the default server config to sites-available
+      become: yes
+      copy:
+        src: /home/ubuntu/checkbox.io/local-conf/default
+        dest: /etc/nginx/sites-available/
+
+    - name: Copy nginx configuration
+      become: yes
+      copy:
+        src: /home/ubuntu/checkbox.io/local-conf/nginx.conf
+        dest: /etc/nginx/
+    
+    - name: Install npm modules
+      become: yes
+      command: chdir=/home/ubuntu/checkbox.io/server-side/site/ npm install
+
+    - service:
+        name: nginx
+        state: restarted
+

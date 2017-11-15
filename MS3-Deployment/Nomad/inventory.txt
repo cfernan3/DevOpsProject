@@ -1,0 +1,16 @@
+[server]
+nomad1 nomad_node_role=server nomad_iface=eth0 consul_node_role=bootstrap consul_iface=eth0 consul_client_address=52.70.71.92 ansible_host=52.70.71.92 ansible_user=ubuntu ansible_ssh_private_key_file=/tmp/WhatBot.pem
+
+[clients]
+nomad2 nomad_node_role=client nomad_iface=eth0 consul_node_role=client consul_iface=eth0 consul_client_address=52.202.52.119 ansible_host=52.202.52.119 ansible_user=ubuntu ansible_ssh_private_key_file=/tmp/WhatBot.pem 
+nomad3 nomad_node_role=client nomad_iface=eth0 consul_node_role=client consul_iface=eth0 consul_client_address=34.239.35.73 ansible_host=34.239.35.73 ansible_user=ubuntu ansible_ssh_private_key_file=/tmp/WhatBot.pem 
+
+[nomad_instances]
+[nomad_instances:children]
+server
+clients
+
+[consul_instances]
+[consul_instances:children]
+server
+clients
