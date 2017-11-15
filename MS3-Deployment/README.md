@@ -23,6 +23,9 @@ Milestone2: https://github.ncsu.edu/rpathur/DevOpsProject/tree/Milestone2/MS2-Te
 ## Deployment
 https://youtu.be/whdO3UlxoZw
 
+## Nomad-Job
+https://youtu.be/CftiuSjXZcI
+
 ## Feature Flag
 http://youtu.be/tKDSOflHtGA?hd=1
 
