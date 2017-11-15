@@ -18,6 +18,14 @@ Milestone2: https://github.ncsu.edu/rpathur/DevOpsProject/tree/Milestone2/MS2-Te
 * Add the public IP for the EC2 instances for iTrust and checkbox in the inventory files 
 * Add the Access key and secret key in the Provision*.yml files
 
+
+# Infrastructure Upgrade
+
+### Feature Flag
+
+
+
+
 # Screencasts
 
 ## Deployment
