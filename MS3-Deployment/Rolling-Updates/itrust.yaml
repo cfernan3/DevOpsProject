@@ -19,18 +19,18 @@
     - name: Installing python 2
       raw: test -e /usr/bin/python || (sudo apt -y update && sudo apt install -y python-minimal) 
 
-   # - name: git clone
-   #   command: git clone git@github.ncsu.edu:abandar/iTrust-v23.git
-   #   when: not st.stat.exists
-   #   args:
-   #     chdir: /home/ubuntu/
-   #   become: no
-
     - name: Copying new build to remote
       synchronize:
         src: /var/lib/jenkins/workspace/iTrust
         dest: /home/ubuntu/
 
+    - lineinfile:
+        dest: /home/ubuntu/iTrust/iTrust/WebRoot/META-INF/context.xml
+        regexp: "\turl=\"jdbc:mysql://localhost:3306"
+        line: "url=\"jdbc:mysql://{{ mysqlserver }}:3306/itrust?createDatabaseIfNotExist=true\""
+        remote_src: yes
+      become: yes
+  
     - name: Add Oracle java apt repository key
       apt_repository:
         repo: 'ppa:webupd8team/java'
