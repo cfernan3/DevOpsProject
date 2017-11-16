@@ -25,7 +25,7 @@ Milestone3: https://github.ncsu.edu/rpathur/DevOpsProject/tree/Milestone3/MS3-De
 
 iTrust and checkbox.io applications were successfully deployed on the two EC2 instances.
 The Jenkins jobs, each for iTrust and checkbox, gets triggered once a push has been done onthe prodcution repo.
-The post build job action runs the provision*.yml file which automatically reserves two EC2 instances and inturn triggers another post build job action that runs the deployment playbook to auto install iTrust and checkbox.io application on each of the two instances respectively. 
+The post build job action runs the provision*.yml file which automatically reserves two EC2 instances and inturn triggers another post build job action that runs the deployment(checkbox_post.yml/iTrust.yml) playbooks to auto install iTrust and checkbox.io application on each of the two instances respectively. 
 
 
 # Infrastructure Upgrade
