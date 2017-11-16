@@ -76,7 +76,9 @@ The steps involved here are:
 * On observing alerts, the load balancer directs all the traffic to the production EC2 instance.
 
 # Rolling Update
-
+* In the Deployment section, iTrust is being deployed on a remote machine on EC2 using playbooks that are triggered by Jenkins jobs. Similarly five instances of iTrust are being deployed using the Jenkins *iTrust* job, that triggers the iTrust.yaml file in the Rolling-Updates folder, but this time it was deployed on Microsoft Azure.
+* The job that deploys iTrust picks an IP address under the section [mysqlserver] from the inventory file and runs a centralized MySql database on that host for all the instances. 
+* The Jenkins job *iTrust-Rolling* is a job that deploys updates on the running iTrust instances, one after the other, so that there are atleast 4 operational iTrust instances all the time. The job uses a playbook *iTrustroll.yaml* in its build to reploy iTrust on all 5 instances, sequentially one after the other on a git push to the production git repo with new code.
 
 # Screencasts
 
