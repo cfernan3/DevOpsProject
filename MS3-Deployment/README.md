@@ -54,6 +54,9 @@ Due to the master-slave redis configuration already set up by automatically edit
 
 ***Below is the topology used***
 
+![featureflag](https://media.github.ncsu.edu/user/6391/files/1f2600ca-ca3c-11e7-899d-60388fb4a7a3)
+
+
 # Canary Release
 
 
