@@ -59,6 +59,18 @@ Due to the master-slave redis configuration already set up by automatically edit
 
 # Canary Release
 
+***Below is the topology used***
+
+![image](https://media.github.ncsu.edu/user/6391/files/805f9220-ca3c-11e7-9595-fc54c2ca90ca)
+
+We have enhanced the deployment of the checbox.io application by adding the feature to perform a canary release using a proxy load-balancer and routing some percentage of the traffic to the canary EC2 instance and the other to the production EC2 instance.
+Once the newly deployed code on the canary causes errors, the load balancer redirects all the traffic to the prodcution checkbox.io running EC2
+
+The steps involved here are:
+* Developer first pushes the code to canary branch of the repo
+* That triggers the jenkins canary build job and on successful build, the new code will be deployed in the canary EC2 instance
+* The load balancer routes some amount of traffic on to the canary EC2 and the remaining on the production checkbox.io running EC2
+* On observing 
 
 # Rolling Update
 
