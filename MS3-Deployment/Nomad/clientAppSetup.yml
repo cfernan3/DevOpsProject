@@ -6,10 +6,10 @@
   environment:
     MONGO_PORT: 3002
     MONGO_IP: localhost
-    MONGO_USER: 'admin'             #Enter appriopriate username
-    MONGO_PASSWORD: 'admin'         #Enter appropriate password
-    MAIL_USER: 'admin@example.com'              #Enter appropriate email id
-    MAIL_PASSWORD: 'admin'          #Enter appropriate email password
+    MONGO_USER:              #Enter appriopriate username
+    MONGO_PASSWORD:          #Enter appropriate password
+    MAIL_USER:               #Enter appropriate email id
+    MAIL_PASSWORD:           #Enter appropriate email password
     MAIL_SMTP: 587
 
   tasks:
