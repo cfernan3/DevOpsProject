@@ -67,10 +67,13 @@ We have enhanced the deployment of the checbox.io application by adding the feat
 Once the newly deployed code on the canary causes errors, the load balancer redirects all the traffic to the prodcution checkbox.io running EC2
 
 The steps involved here are:
-* Developer first pushes the code to canary branch of the repo
+* Developer first modifies the checboxio/public_html/index.html(as below) and pushes the code to canary branch of the repo
+
+![image](https://media.github.ncsu.edu/user/6391/files/dc8417ea-ca3e-11e7-89a0-ea116c17812e)
+
 * That triggers the jenkins canary build job and on successful build, the new code will be deployed in the canary EC2 instance
 * The load balancer routes some amount of traffic on to the canary EC2 and the remaining on the production checkbox.io running EC2
-* On observing 
+* On observing alerts, the load balancer directs all the traffic to the production EC2 instance.
 
 # Rolling Update
 
