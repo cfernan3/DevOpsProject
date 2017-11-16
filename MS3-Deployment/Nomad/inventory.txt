@@ -1,9 +1,9 @@
 [server]
-nomad1 nomad_node_role=server nomad_iface=eth0 consul_node_role=bootstrap consul_iface=eth0 consul_client_address=#Nomad-server-IP ansible_host=#Nomad-server-IP ansible_user=ubuntu ansible_ssh_private_key_file=/tmp/WhatBot.pem
+nomad1 nomad_node_role=server nomad_iface=eth0 consul_node_role=bootstrap consul_iface=eth0 consul_client_address=#Nomad-server-IP ansible_host=#Nomad-server-IP ansible_user=ubuntu ansible_ssh_private_key_file=<pem file>
 
 [clients]
-nomad2 nomad_node_role=client nomad_iface=eth0 consul_node_role=client consul_iface=eth0 consul_client_address=#Nomad-client-IP ansible_host=#Nomad-client-IP ansible_user=ubuntu ansible_ssh_private_key_file=/tmp/WhatBot.pem 
-nomad3 nomad_node_role=client nomad_iface=eth0 consul_node_role=client consul_iface=eth0 consul_client_address=#Nomad-client-IP ansible_host=#Nomad-client-IP ansible_user=ubuntu ansible_ssh_private_key_file=/tmp/WhatBot.pem 
+nomad2 nomad_node_role=client nomad_iface=eth0 consul_node_role=client consul_iface=eth0 consul_client_address=#Nomad-client-IP ansible_host=#Nomad-client-IP ansible_user=ubuntu ansible_ssh_private_key_file=<pem file> 
+nomad3 nomad_node_role=client nomad_iface=eth0 consul_node_role=client consul_iface=eth0 consul_client_address=#Nomad-client-IP ansible_host=#Nomad-client-IP ansible_user=ubuntu ansible_ssh_private_key_file=<pem file> 
 
 [nomad_instances]
 [nomad_instances:children]
