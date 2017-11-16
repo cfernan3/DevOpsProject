@@ -11,9 +11,9 @@
     ec2_subnet_ids: subnet-07e9454c
     aws_access_key:        #Enter appropriate aws_access_key
     aws_secret_key:  #Enter appropriate aws_secret_key
-    e_ip: 34.236.25.119 #Enter the public ip (elastic ip) for the new machine
-    e_ip1: 34.238.3.20
-    e_ip2: 34.239.67.69
+    e_ip:  #Enter the public ip (elastic ip) for the new machine
+    e_ip1: 
+    e_ip2: 
   tasks:
     - name: Get information of existing EC2 instances
       ec2_remote_facts:
