@@ -26,6 +26,15 @@ Milestone3: https://github.ncsu.edu/rpathur/DevOpsProject/tree/Milestone3/MS3-De
 # Infrastructure Upgrade
 
 ### Nomad Cluster
+Nomad effectively shedules jobs for nodes present within a cluster( nomad-clients and nomad servers). It is the nomad-server that would execute schedule the job amongst the clients and specifics of the job to be scheduled is in our case running the node server.js command.
+The steps taken are explained as below-
+1) Execute createEc2.yml which spawns 3 ec2 instances in the same VPC with the trust(ubuntu 14.04) image and assigns them with 3 elastic ips. The elastic IP's are referrenced later in the inventory and hence determines which node is the server or client by using "node_role"
+3) Execute clientAppSetup.yml that installs the binaries/dependancies required for running checkbox.io( the playbook does not execute node server.js)
+3) Execute nomad.yml that installs nomad on all nodes in cluster and copies the job file( execute node server.js) onto the nomad-server. It uses the brianshumate galaxy role.
+
+The nomad job file will execute the node server.js command on one of the nodes and when that node is killed, the nomad server realizes this and hence executes the job on the other node. The job type is the default service type.
+Reference - https://www.youtube.com/watch?v=4cN_2N2jq-8&feature=youtu.be
+
 
 ### Feature Flag
 
