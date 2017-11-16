@@ -80,17 +80,17 @@ The steps involved here are:
 
 # Screencasts
 
-## Deployment
+#### Deployment
 https://youtu.be/whdO3UlxoZw
 
-## Nomad-Job
+#### Nomad-Job
 https://youtu.be/CftiuSjXZcI
 
-## Feature Flag
+#### Feature Flag
 http://youtu.be/tKDSOflHtGA?hd=1
 
-## Canary Release
+#### Canary Release
 https://youtu.be/Kj5e7-FwHwU
 
-## Rolling Update
+#### Rolling Update
 https://youtu.be/TQRf9I4aon4
