@@ -11,6 +11,8 @@ Milestone1: https://github.ncsu.edu/rpathur/DevOpsProject/tree/master/MS1-Config
 
 Milestone2: https://github.ncsu.edu/rpathur/DevOpsProject/tree/Milestone2/MS2-TestAnalysis
 
+Milestone3: https://github.ncsu.edu/rpathur/DevOpsProject/tree/Milestone3/MS3-Deployment
+
 # Prerequisites
 
 * Add the public IP of the EC2 instance in the inventory file
