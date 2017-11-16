@@ -24,7 +24,7 @@ Milestone3: https://github.ncsu.edu/rpathur/DevOpsProject/tree/Milestone3/MS3-De
 # Deployment
 
 iTrust and checkbox.io applications were successfully deployed on the two EC2 instances.
-The Jenkins jobs, each for iTrust and checkbox, gets triggered once a push has been done onthe prodcution repo.
+The Jenkins jobs, each for iTrust and checkbox, gets triggered once a push has been done on the production repo.
 The post build job action runs the provision*.yml file which automatically reserves two EC2 instances and inturn triggers another post build job action that runs the deployment(checkbox_post.yml/iTrust.yml) playbooks to auto install iTrust and checkbox.io application on each of the two instances respectively. 
 
 
@@ -52,6 +52,7 @@ Due to the master-slave redis configuration already set up by automatically edit
 ***Below is the snippet of the code modified in server.js(checkbox.io)***
 ![image](https://media.github.ncsu.edu/user/6391/files/6601656e-ca34-11e7-9fce-fc2719dda4d2)
 
+***Below is the topology used***
 
 # Canary Release
 
