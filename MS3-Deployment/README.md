@@ -49,17 +49,17 @@ The Feature used to demonstrate is the Preview Feature under Researchers-->Surve
 This Feature wil be enabled and disabled by modifying the value of previewFlag key in the Master Redis database. 
 Due to the master-slave redis configuration already set up by automatically editing the /etc/redis/redis.conf file appropriately, the updated value  of the previewFlag automatically is mirrored on the redis-slave database. Hence, the end user can observe the preview feature enabled and disabled, by accessing the checkbox.io application running on the redis-slave EC2.
 
-***Below is the snippet of the code modified in server.js(checkbox.io)***
+**Below is the snippet of the code modified in server.js(checkbox.io)**
 ![image](https://media.github.ncsu.edu/user/6391/files/6601656e-ca34-11e7-9fce-fc2719dda4d2)
 
-***Below is the topology used***
+**Below is the topology used**
 
 ![featureflag](https://media.github.ncsu.edu/user/6391/files/1f2600ca-ca3c-11e7-899d-60388fb4a7a3)
 
 
 # Canary Release
 
-***Below is the topology used***
+**Below is the topology used**
 
 ![image](https://media.github.ncsu.edu/user/6391/files/805f9220-ca3c-11e7-9595-fc54c2ca90ca)
 
