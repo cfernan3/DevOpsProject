@@ -35,9 +35,8 @@ The steps taken are explained as below-
 The nomad job file will execute the node server.js command on one of the nodes and when that node is killed, the nomad server realizes this and hence executes the job on the other node. The job type is the default service type.
 
 **Reference**
-https://www.youtube.com/watch?v=4cN_2N2jq-8&feature=youtu.be
-
-https://github.ncsu.edu/kpresle/techtalk
+* https://www.youtube.com/watch?v=4cN_2N2jq-8&feature=youtu.be
+* https://github.ncsu.edu/kpresle/techtalk
 
 ### Feature Flag
 
