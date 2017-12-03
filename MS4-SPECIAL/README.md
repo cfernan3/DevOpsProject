@@ -15,6 +15,9 @@ A [google form](https://docs.google.com/forms/d/e/1FAIpQLSfQZN2ky9q9jCyHIQFXNMgT
 
 The flow of the appscript is as per the below tree diagram: ![Cloud readiness Flow diagram](https://github.ncsu.edu/rpathur/DevOpsProject/blob/Milestone4/MS4-SPECIAL/Cloud%20readiness%20diagram.jpg)
 
+![image](https://media.github.ncsu.edu/user/6391/files/4665dc8c-d851-11e7-99b4-a4b7d9eb289b)
+
+
 The major factors deciding the feasibility of migration of the application onto cloud are as follows:
 * **Compute requirement**
 
