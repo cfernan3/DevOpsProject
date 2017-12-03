@@ -2,11 +2,12 @@
 
 ## Cloud Migration Assessment Framework
 
-Many existing companies are exploring the possibility of migrating their application onto cloud
+Many start-ups and well-established companies are exploring the possibility of migrating their application onto cloud. The primary reason being  to reduce the cost on infrastructure deployment, operations and maintenance. The other reason being the auto scaling feature and flexibility provided by cloud providers.
 
-Some applications can be migrated to cloud without making any architectural changes. But certain applications need extensive changes in the architecture, networking, storage and also, its security components before being migrated.
+Cloud is the latest buzz in the technology world and every one wants to be a part of it. However, are all applications easily migrated to cloud? The answer is no. There are certain applications that need extensive changes in the architecture, networking, storage and also, its security components before being migrated. Moreover, various government regulations and compliance can also hinder the migration of the application onto cloud. How can the companies validate their application to check if it is cloud ready? That is what we are trying to answer.
 
-In this milestone, we provide a framework that assesses and analyzes the current architectural design of the application and informs the user, if the application is cloud-ready on the basis of Compute, Networking, Storage, Architecture, Security and Compliance requirements.  
+We have developed a cloud migration feasibility assessment framework that asks the solution architect of the company a set of questions pertaining to the existing architectural desing and requirements of the application. For every answer a score is generated and at the end of the assessment, based on the overall score, the user is informed if the applciation is cloud-ready on the basis of Compute,Networking,Storage, App Architecture, Security and Compliance requirements.
+ 
 
 ### Implementation
 
@@ -25,7 +26,6 @@ The major factors deciding the feasibility of migration of the application onto 
 
 * **Application architecture**
 
-* **Network**
 The script calculates the score for various aspects of the application. It also, generates various pictographic representations like bar graphs and pie charts based on the previous inputs from other users, which would assist the user in choosing from the various possible solutions.
 
 
