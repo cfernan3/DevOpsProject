@@ -16,6 +16,7 @@ A [google form](https://docs.google.com/forms/d/e/1FAIpQLSfQZN2ky9q9jCyHIQFXNMgT
 The flow of the appscript is as per the below tree diagram: ![Cloud readiness Flow diagram](https://github.ncsu.edu/rpathur/DevOpsProject/blob/Milestone4/MS4-SPECIAL/Cloud%20readiness%20diagram.jpg)
 
 The script calculates the score for various aspects of the application. The minimum score is 0 and maximum score is 100. It also, generates various pictographic representations like bar graphs and pie charts based on the previous inputs from other users, which would assist the user in choosing from the various possible solutions.
+
 We carried out sample assessment of various companies as follows
 ![image](https://media.github.ncsu.edu/user/6391/files/5cef7d2c-d857-11e7-90c7-8395e4a03d09)
 
