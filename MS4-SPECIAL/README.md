@@ -11,19 +11,34 @@ We have developed a cloud migration feasibility assessment framework that asks t
 
 ### Implementation
 
-A [google form](https://docs.google.com/forms/d/e/1FAIpQLSfQZN2ky9q9jCyHIQFXNMgT7D4Kl0tL7dMqAI-tediOzcnUCQ/viewform) is used to fetch the details from the user and the responses are fed to an appscript to determine the feasibility of workload migration over to the cloud.
+A [google form](https://docs.google.com/forms/d/e/1FAIpQLSfQZN2ky9q9jCyHIQFXNMgT7D4Kl0tL7dMqAI-tediOzcnUCQ/viewform) is used to fetch the details from the user and the responses are fed to an appscript to determine the feasibility of workload migration over to the cloud. Post completion of the assessment, an email is send to the user notifying if the application is cloud ready or not.
 
 The flow of the appscript is as per the below tree diagram: ![Cloud readiness Flow diagram](https://github.ncsu.edu/rpathur/DevOpsProject/blob/Milestone4/MS4-SPECIAL/Cloud%20readiness%20diagram.jpg)
 
 
 The major factors deciding the feasibility of migration of the application onto cloud are as follows:
-* **Compute requirement**
+* **Compute requirement:**
+Compute resource is an integral part of any applciation and its requirement is one of the significant deciding factor. There are some applicaitons that require specialised hardware or non x86 compute resource. The cloud providers, have varied types of compute resource , however a specific specialised compute resource would not be at their disposal yet. Below is the tree for Compute used in appscript
+
+
+
+
+
+In addition, we carried out 28 sample assessment and below are the summarised reponses for compute
+
+ ![image](https://media.github.ncsu.edu/user/6391/files/1fa908d2-d854-11e7-8478-2b40e61072d8)
+     
+     
+ ![image](https://media.github.ncsu.edu/user/6391/files/3573caf8-d854-11e7-8a7b-1a840d0c7586)
+
+
+
 
 * **Network requirement**
 
 * **Storage requirement**
 
-* **Securoty & Compliance**
+* **Security & Compliance**
 
 * **Application architecture**
 
