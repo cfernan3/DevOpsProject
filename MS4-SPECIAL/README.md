@@ -57,6 +57,7 @@ In addition, we carried out sample assessment and below are the summarised respo
 
 
 * **Storage requirement**
+Applications use application storage for a variety of purposes. They can store small data files (such as custom settings), and large files for applications that have graphically intensive features (such as games, maps, and images). Some applications that access large databases require quick and optimised storage techniques. Some of the factors that are to be considered while making any storage decisions would be to have normalized databases, to choose between SAN and NAS storages.
 
 * **Security & Compliance**
 
