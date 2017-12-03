@@ -15,7 +15,10 @@ A [google form](https://docs.google.com/forms/d/e/1FAIpQLSfQZN2ky9q9jCyHIQFXNMgT
 
 The flow of the appscript is as per the below tree diagram: ![Cloud readiness Flow diagram](https://github.ncsu.edu/rpathur/DevOpsProject/blob/Milestone4/MS4-SPECIAL/Cloud%20readiness%20diagram.jpg)
 
-The script calculates the score for various aspects of the application. It also, generates various pictographic representations like bar graphs and pie charts based on the previous inputs from other users, which would assist the user in choosing from the various possible solutions.
+The script calculates the score for various aspects of the application. The minimum score is 0 and maximum score is 100. It also, generates various pictographic representations like bar graphs and pie charts based on the previous inputs from other users, which would assist the user in choosing from the various possible solutions.
+We carried out sample assessment of various companies as follows
+![image](https://media.github.ncsu.edu/user/6391/files/5cef7d2c-d857-11e7-90c7-8395e4a03d09)
+
 
 The major factors deciding the feasibility of migration of the application onto cloud are as follows:
 * **Compute requirement:**
@@ -27,7 +30,7 @@ Compute resource is an integral part of any applciation and its requirement is o
 
 
 
-In addition, we carried out 28 sample assessment and below are the summarised reponses for compute
+In addition, we carried out sample assessment and below are the summarised reponses for compute
 
  ![image](https://media.github.ncsu.edu/user/6391/files/1fa908d2-d854-11e7-8478-2b40e61072d8)
      
@@ -37,7 +40,13 @@ In addition, we carried out 28 sample assessment and below are the summarised re
 
 
 
-* **Network requirement**
+* **Network requirement:**
+Network resource is another integral part of any applciation and its requirement is one of the significant deciding factor. There are some applicaitons that require IPv6/multicast addressing scheme/VPN/High bandwidth due to large number of transactions per second etc. Below is the tree for Network used in appscript
+
+![image](https://media.github.ncsu.edu/user/6391/files/128801d2-d857-11e7-85fa-b1aff8a8f08e)
+
+In addition, we carried outsample assessment and below are the summarised responses for network
+
 
 * **Storage requirement**
 
