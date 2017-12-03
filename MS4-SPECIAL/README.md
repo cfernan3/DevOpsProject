@@ -1,6 +1,10 @@
 ## DevOps Special Milestone
 
-### Cloud Migration Assessment Framework
+## Cloud Migration Assessment Framework
+
+Some applications can be migrated to cloud without making any architectural changes. But certain applications need extensive changes in the architecture, networking, storage and also, its security components before being migrated.
+
+In this milestone, we provide a framework that assesses and analyzes the current architectural design of the application and informs the user, if the application is cloud-ready on the basis of Compute, Networking, Storage, Architecture, Security and Compliance requirements.
 
 
 
