@@ -21,6 +21,8 @@ The major factors deciding the feasibility of migration of the application onto 
 * **Compute requirement:**
 Compute resource is an integral part of any applciation and its requirement is one of the significant deciding factor. There are some applicaitons that require specialised hardware or non x86 compute resource. The cloud providers, have varied types of compute resource , however a specific specialised compute resource would not be at their disposal yet. Below is the tree for Compute used in appscript
 
+![image](https://media.github.ncsu.edu/user/6391/files/83ba4006-d855-11e7-95b1-2bc5f521d73e)
+
 
 
 
