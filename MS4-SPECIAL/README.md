@@ -46,7 +46,14 @@ Network resource is another integral part of any applciation and its requirement
 
 ![image](https://media.github.ncsu.edu/user/6391/files/128801d2-d857-11e7-85fa-b1aff8a8f08e)
 
-In addition, we carried outsample assessment and below are the summarised responses for network
+In addition, we carried out sample assessment and below are the summarised responses for network
+
+![image](https://media.github.ncsu.edu/user/6391/files/9e5a1074-d857-11e7-85df-0da53e966d18)
+
+![image](https://media.github.ncsu.edu/user/6391/files/abada268-d857-11e7-827d-e72c300f99aa)
+
+![image](https://media.github.ncsu.edu/user/6391/files/b82906ea-d857-11e7-9fc5-ba11875d10c6)
+
 
 
 * **Storage requirement**
