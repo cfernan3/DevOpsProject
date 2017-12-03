@@ -46,7 +46,7 @@ In addition, we carried out sample assessment and below are the summarised repon
 
 Network resource is another integral part of any applciation and its requirement is one of the significant deciding factor. There are some applicaitons that require IPv6/multicast addressing scheme/VPN/High bandwidth due to large number of transactions per second etc. Below is the tree for Network used in appscript
 
-![image](https://media.github.ncsu.edu/user/6391/files/128801d2-d857-11e7-85fa-b1aff8a8f08e)
+![image](https://media.github.ncsu.edu/user/7412/files/eb74839a-d85b-11e7-9640-9b95c9834859)
 
 In addition, we carried out sample assessment and below are the summarised responses for network
 
