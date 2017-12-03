@@ -60,9 +60,17 @@ In addition, we carried out sample assessment and below are the summarised respo
 
 * **Storage requirement:**
 
-Applications use application storage for a variety of purposes. They can store small data files (such as custom settings), and large files for applications that have graphically intensive features (such as games, maps, and images). Some applications that access large databases require quick and optimised storage techniques. Some of the factors that are to be considered while making any storage decisions would be whether to normalize databases, to choose between SAN and NAS storage, if the data needs to be backed up reqularly etc. Below is the tree for Storage used in appscript
+Applications use application storage for a variety of purposes. They can store small data files (such as custom settings), and large files for applications that have graphically intensive features (such as games, maps, and images). Some applications that access large databases require quick and optimised storage techniques. Some of the factors that are to be considered while making any storage decisions would be whether to normalize databases, to choose between SAN and NAS storage, if the data needs to be backed up reqularly etc. Below is the tree for Storage used in appscript:
 
+![image](https://media.github.ncsu.edu/user/7412/files/be3fb1a2-d85a-11e7-8973-d55d5b8ee756)
 
+In addition, we carried out sample assessment and below are the summarised responses for Storage:
+
+![image](https://media.github.ncsu.edu/user/7412/files/79f7ac70-d85a-11e7-80a0-f829c517b8b0)
+
+![image](https://media.github.ncsu.edu/user/7412/files/9546fc56-d85a-11e7-86ba-1f7034c11c0f)
+
+![image](https://media.github.ncsu.edu/user/7412/files/a0689cca-d85a-11e7-87a8-8b9a95958023)
 
 
 * **Security & Compliance**
