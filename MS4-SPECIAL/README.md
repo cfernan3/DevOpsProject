@@ -74,11 +74,12 @@ Applications could be either monolithic or distributed in nature. For most appli
 
 In addition, we carried out sample assessment and below are the summarised responses for Application Architecture:
 
-![image](https://media.github.ncsu.edu/user/7412/files/86059e0c-d85d-11e7-8afa-43e996568ef5)
+![image](https://media.github.ncsu.edu/user/6391/files/4dcfc97e-d860-11e7-9d52-3f02aabf6935)
 
-![image](https://media.github.ncsu.edu/user/7412/files/8e949cda-d85d-11e7-8bc4-0549e523f0e7)
+![image](https://media.github.ncsu.edu/user/6391/files/5d11955c-d860-11e7-8597-2c2452f8a14b)
 
-![image](https://media.github.ncsu.edu/user/7412/files/983b6e30-d85d-11e7-9f75-0a3704af6961)
+![image](https://media.github.ncsu.edu/user/6391/files/69b97ce8-d860-11e7-84b8-81a6c7160474)
+
 
 * **Security & Compliance:**
 
