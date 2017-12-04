@@ -112,10 +112,11 @@ In addition, we carried out sample assessment and below are the summarised repon
 
 ![image](https://media.github.ncsu.edu/user/6391/files/1c34f6ea-d866-11e7-83c6-f8c66b550e40)
 
+*The email was received from dppynada@ncsu.edu because the G Suite was created using the same email address*
 
 Checkbox.io application is not production cloud ready. The factors that impede the migration are(as per the response)
-* The lack of queueing stategy
-* A normalised SQL database to keep track of users information
+* The lack of queueing stategy(in storage)
+* A normalised SQL database to keep track of users information like credentials(in storage) 
 
 ## Project Presentation:
 
