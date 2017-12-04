@@ -17,7 +17,7 @@ The flow of the appscript is as per the below tree diagram: ![Cloud readiness Fl
 
 The script calculates the score for various aspects of the application. The minimum score is 0 and maximum score is 100. It also, generates various pictographic representations like bar graphs and pie charts based on the previous inputs from other users, which would assist the user in choosing from the various possible solutions.
 
-#### appscript that includes backend logic
+#### appscript(Code.gs) that includes backend logic
       function onFormSubmit(e) {
       var response = e.values;
       var score = 0
@@ -72,7 +72,7 @@ The script calculates the score for various aspects of the application. The mini
       emailUser(name,result,compute,network,storage,arch,security,e.values[17])
       }
 
-
+The appscript (Code.gs) records the responses of the user and checks if the final score if greater than 95, then the application is cloud ready else it is not. At the end it triggers the email.gs appscript to send out the report to the user
 
 
 ******************************************************************************************************************************
