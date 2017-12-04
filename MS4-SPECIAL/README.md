@@ -94,7 +94,7 @@ In addition, we carried out sample assessment and below are the summarised repon
 ![image](https://media.github.ncsu.edu/user/6391/files/4883801c-d862-11e7-8ef3-632d520d838b)
 
 
-#### Example of checkbox.io application's Cloud Migration Assessment
+## Example of checkbox.io application's Cloud Migration Assessment
 
 ![image](https://media.github.ncsu.edu/user/6391/files/bca262aa-d863-11e7-9b59-66c7c9340c36)
 
