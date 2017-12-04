@@ -125,5 +125,5 @@ Checkbox.io application is not production cloud ready. The factors that impede t
 .pptx version of the project presentation - ![DevOps Pipeline.pptx](https://github.ncsu.edu/rpathur/DevOpsProject/blob/Milestone4/MS4-SPECIAL/DevOps%20Pipeline.pptx)
 
 ## Project Demo - Screencast:
- 
- Please find the demo of the Special Milestone at https://youtu.be/OOkvr5I3yS4
+ ### DevOps Pipeline : https://youtu.be/TWk3nuAYI6g
+ ### Special Milestone: https://youtu.be/OOkvr5I3yS4
