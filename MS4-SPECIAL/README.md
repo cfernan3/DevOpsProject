@@ -72,10 +72,23 @@ In addition, we carried out sample assessment and below are the summarised respo
 
 ![image](https://media.github.ncsu.edu/user/7412/files/8c402fd2-d85b-11e7-8ea0-cf852d1a515d)
 
+* **Application architecture:**
 
-* **Security & Compliance**
+Applications could be either monolithic or distributed in nature. For most applications, that are distributed in general, communication between various services offered by the application and also between the various servers must be synchronized, allowing minimum latency for the inter-service communications. For an application to provide 24/7 uptime, it is desired that there must be redundant servers offering the same service. Message queues, RPC calls, Request/Response format messages are generally used for communication between various service APIs of the application. Below is the tree for Application Architecture used in appscript:
 
-* **Application architecture**
+![image](https://media.github.ncsu.edu/user/7412/files/49d90388-d85d-11e7-8f94-c0d0a3034f2b)
+
+In addition, we carried out sample assessment and below are the summarised responses for Application Architecture:
+
+![image](https://media.github.ncsu.edu/user/7412/files/86059e0c-d85d-11e7-8afa-43e996568ef5)
+
+![image](https://media.github.ncsu.edu/user/7412/files/8e949cda-d85d-11e7-8bc4-0549e523f0e7)
+
+![image](https://media.github.ncsu.edu/user/7412/files/983b6e30-d85d-11e7-9f75-0a3704af6961)
+
+* **Security & Compliance:*
+
+
 
 
 
