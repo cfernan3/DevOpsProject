@@ -84,18 +84,13 @@ In addition, we carried out sample assessment and below are the summarised respo
 * **Security & Compliance:**
 Some of the applications have to comply with the government regulations that may prohibit storage or replication of data (for Disaster Recovery) outside the country or a particular continent. Below is the tree for Storage used in appscript:
 
+![image](https://media.github.ncsu.edu/user/7412/files/02a12e5e-d863-11e7-888f-55ad0fde56f2)
+
 In addition, we carried out sample assessment and below are the summarised reponses for Security & Compliance
 
 ![image](https://media.github.ncsu.edu/user/6391/files/28b28864-d862-11e7-9faa-d5fcdca1eccf)
 
 ![image](https://media.github.ncsu.edu/user/6391/files/4883801c-d862-11e7-8ef3-632d520d838b)
-
-
-
-
-
-
-
 
 
 ## Project Presentation:
