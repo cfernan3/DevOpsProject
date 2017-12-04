@@ -33,7 +33,8 @@ In addition, we carried out sample assessment and below are the summarised repon
 
  ![image](https://media.github.ncsu.edu/user/6391/files/1fa908d2-d854-11e7-8478-2b40e61072d8)
         
- ![image](https://media.github.ncsu.edu/user/6391/files/3573caf8-d854-11e7-8a7b-1a840d0c7586)
+ ![image](https://media.github.ncsu.edu/user/6391/files/5c5eb34e-d863-11e7-8dfb-3654e7f09ea2)
+
 
 * **Network requirement:**
 
