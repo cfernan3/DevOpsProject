@@ -82,7 +82,7 @@ In addition, we carried out sample assessment and below are the summarised respo
 
 
 * **Security & Compliance:**
-
+Some of the applications have to comply with the government regulations that may prohibit storage or replication of data (for Disaster Recovery) outside the country or a particular continent. Moreover
 
 
 
