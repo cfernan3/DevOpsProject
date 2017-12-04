@@ -59,11 +59,12 @@ Applications use application storage for a variety of purposes. They can store s
 
 In addition, we carried out sample assessment and below are the summarised responses for Storage:
 
-![image](https://media.github.ncsu.edu/user/7412/files/6632b436-d85b-11e7-90be-0c562ca1b1d4)
+![image](https://media.github.ncsu.edu/user/6391/files/fc6687d0-d85f-11e7-9c22-e253737ca864)
 
-![image](https://media.github.ncsu.edu/user/7412/files/7cea7e02-d85b-11e7-9754-ddafbf4aa81a)
+![image](https://media.github.ncsu.edu/user/6391/files/1f3bc216-d860-11e7-9492-256548214cb5)
 
-![image](https://media.github.ncsu.edu/user/7412/files/8c402fd2-d85b-11e7-8ea0-cf852d1a515d)
+![image](https://media.github.ncsu.edu/user/6391/files/2ca45c74-d860-11e7-84b2-993fe55c167c)
+
 
 * **Application architecture:**
 
