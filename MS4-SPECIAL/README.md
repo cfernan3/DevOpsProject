@@ -28,19 +28,11 @@ Compute resource is an integral part of any applciation and its requirement is o
 
 ![image](https://media.github.ncsu.edu/user/6391/files/83ba4006-d855-11e7-95b1-2bc5f521d73e)
 
-
-
-
-
 In addition, we carried out sample assessment and below are the summarised reponses for compute
 
  ![image](https://media.github.ncsu.edu/user/6391/files/1fa908d2-d854-11e7-8478-2b40e61072d8)
-     
-     
+        
  ![image](https://media.github.ncsu.edu/user/6391/files/3573caf8-d854-11e7-8a7b-1a840d0c7586)
-
-
-
 
 * **Network requirement:**
 
@@ -86,7 +78,7 @@ In addition, we carried out sample assessment and below are the summarised respo
 
 ![image](https://media.github.ncsu.edu/user/7412/files/983b6e30-d85d-11e7-9f75-0a3704af6961)
 
-* **Security & Compliance:*
+* **Security & Compliance:**
 
 
 
