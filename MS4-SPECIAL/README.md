@@ -74,7 +74,7 @@ The script calculates the score for various aspects of the application. The mini
 
 The appscript (Code.gs) records the responses of the user and checks if the final score if greater than 95, then the application is cloud ready else it is not. At the end it triggers the email.gs appscript to send out the report to the user
 
-### email.gs appscriptto send out report to the user
+### email.gs appscript to send out report to the user
 
 ![image](https://media.github.ncsu.edu/user/6391/files/e27e4dcc-d868-11e7-8684-60eed8c164d7)
 
