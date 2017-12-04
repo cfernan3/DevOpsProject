@@ -51,7 +51,7 @@ The script calculates the score for various aspects of the application. The mini
     {
           if(e.values[i+1] == answers[i]) security = security + points[i];        
     }
-  }
+    }
   
       score = compute+network+storage+arch+security;
       if(score >= 95){
