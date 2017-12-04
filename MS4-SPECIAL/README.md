@@ -104,6 +104,13 @@ In addition, we carried out sample assessment and below are the summarised repon
 
 ![image](https://media.github.ncsu.edu/user/6391/files/26b998a2-d864-11e7-81aa-6f2e24d13613)
 
+![image](https://media.github.ncsu.edu/user/6391/files/d7b9afc4-d865-11e7-8a54-4fd855489313)
+
+![image](https://media.github.ncsu.edu/user/6391/files/f220ecec-d865-11e7-9855-f6819205714e)
+
+![image](https://media.github.ncsu.edu/user/6391/files/063d1840-d866-11e7-9f36-3f29b1e43bff)
+
+![image](https://media.github.ncsu.edu/user/6391/files/1c34f6ea-d866-11e7-83c6-f8c66b550e40)
 
 
 Checkbox.io application is not production cloud ready. The factors that impede the migration are(as per the response)
