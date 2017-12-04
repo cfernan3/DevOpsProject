@@ -94,6 +94,22 @@ In addition, we carried out sample assessment and below are the summarised repon
 ![image](https://media.github.ncsu.edu/user/6391/files/4883801c-d862-11e7-8ef3-632d520d838b)
 
 
+#### Example of checkbox.io application's Cloud Migration Assessment
+
+![image](https://media.github.ncsu.edu/user/6391/files/bca262aa-d863-11e7-9b59-66c7c9340c36)
+
+![image](https://media.github.ncsu.edu/user/6391/files/d0acef22-d863-11e7-9fb1-4f974518c2f8)
+
+![image](https://media.github.ncsu.edu/user/6391/files/e5adf966-d863-11e7-9e65-85b873ee2143)
+
+![image](https://media.github.ncsu.edu/user/6391/files/26b998a2-d864-11e7-81aa-6f2e24d13613)
+
+
+
+Checkbox.io application is not production cloud ready. The factors that impede the migration are(as per the response)
+* The lack of queueing stategy
+* A normalised SQL database to keep track of users information
+
 ## Project Presentation:
 
 .pdf version of the project presentation - ![DevOps Pipeline.pdf](https://github.ncsu.edu/rpathur/DevOpsProject/blob/Milestone4/MS4-SPECIAL/DevOps%20Pipeline.pdf)
